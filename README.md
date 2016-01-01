@@ -32,7 +32,7 @@ Install the gem with:
 
 Or, add it to your project's `Gemfile`:
 
-```gem 'cf_script', '0.1.0.pre'```
+```gem 'cf_script', '0.0.1.beta.1'```
 
 ---
 
