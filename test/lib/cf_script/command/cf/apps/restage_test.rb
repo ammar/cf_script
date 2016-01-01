@@ -1,13 +1,13 @@
 require 'test_helper'
 
-describe 'StartCommand' do
+describe 'RestageCommand' do
   include MockExecution
 
-  let(:command) { CfScript::Command::Apps::StartCommand.instance }
+  let(:command) { CfScript::Command::Apps::RestageCommand.instance }
 
   it_behaves_like 'a command object that', {
     has_type:  :apps,
-    has_name:  :start,
+    has_name:  :restage,
     fails_with: nil
   }
 
@@ -39,16 +39,8 @@ describe 'StartCommand' do
     end
   end
 
-  it "correctly handles container creation output" do
-    fake_cf start: :with_container do
-      app_info = command.run(:frontend)
-
-      assert_app_info(app_info, expected_instances)
-    end
-  end
-
   it "returns nil on failure" do
-    fake_cf start: :not_found do
+    fake_cf restage: :not_found do
       assert_equal nil, command.run(:some_app)
     end
   end

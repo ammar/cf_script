@@ -12,8 +12,20 @@ module CfScript::Scope
       end
     end
 
+    def restart
+      CfScript::Command.restart name do |app_info|
+        @app_info = app_info if app_info
+      end
+    end
+
     def push(options = {})
       CfScript::Command.push name, options do |app_info|
+        @app_info = app_info if app_info
+      end
+    end
+
+    def restage
+      CfScript::Command.restage name do |app_info|
         @app_info = app_info if app_info
       end
     end

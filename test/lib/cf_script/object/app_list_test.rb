@@ -29,14 +29,14 @@ describe CfScript::AppList do
   end
 
   it "selects by prefix" do
-    list.select!(ending_with: 'one')
+    list.select!(ending_with: 'worker')
 
     assert_equal 1, list.length
     assert_equal 'one-worker', list.first.name
   end
 
   it "selects by suffix" do
-    list.select!(starting_with: 'engine')
+    list.select!(starting_with: 'two')
 
     assert_equal 1, list.length
     assert_equal 'two-engine', list.first.name

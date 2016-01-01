@@ -1,0 +1,8 @@
+---
+stdout: |
+  FAILED
+  App api not found
+
+stderr: ''
+status:
+  exitstatus: 1

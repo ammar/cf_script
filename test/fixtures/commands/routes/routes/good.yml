@@ -1,0 +1,14 @@
+---
+stdout: |
+  Getting routes as user@example.com ...
+  
+  space         host                                domain      apps
+  development   users                               example.io
+  development   api                                 example.io  api, users
+  development   org-development-frontend-green      example.ps
+  development   org-development-projects-green      example.io
+  development   org-projects                        example.io  projects-green
+
+stderr: ''
+status:
+  exitstatus: 0

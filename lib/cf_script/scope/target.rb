@@ -50,7 +50,7 @@ module CfScript::Scope
     def apps(options = {}, &block)
       apps = CfScript::Command.apps
 
-      apps.filter!(options) unless options.empty?
+      apps.select!(options) unless options.empty?
 
       block_given? ? yield(apps) : apps
     end

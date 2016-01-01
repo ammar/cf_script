@@ -17,13 +17,5 @@ module CfScript::Scope
         cf_self; not has_route?(domain, host)
       end
     end
-
-   #def check_route(host, domain)
-   #  CfScript::Command.check_route host, domain
-   #end
-
-   #def delete_route(domain, host =  nil, force = false)
-   #  CfScript::Command.delete_route domain, host, force
-   #end
   end
 end

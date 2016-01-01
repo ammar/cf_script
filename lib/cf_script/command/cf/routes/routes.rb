@@ -1,34 +1,40 @@
-module CfScript::Command::Routes
-# def map_route(app, domain, host =  nil, &block)
-#   options = host ? { n: host } : {}
+module CfScript::Command
+  class Routes::RoutesCommand < CfScript::Command::Base
+    ROUTES_TABLE = ['space', 'host', 'domain', 'apps']
 
-#   run_cf :map_route, app_name(app), domain, options do |output|
-#     mapped = output.ok?
+    def initialize
+      super(:routes, :routes)
+    end
 
-#     block_given? ? yield(mapped) : mapped
-#   end
-# end
+    def run(*args, &block)
+      run_cf self do |output|
+        return unless can_run?(output)
 
-# def unmap_route(app, domain, host =  nil, &block)
-#   options = host ? { n: host } : {}
+        if rows = output.table(ROUTES_TABLE)
+          routes = build_route_info(rows)
 
-#   run_cf :unmap_route, app_name(app), domain, options do |output|
-#     unmapped = output.ok?
+          block_given? ? yield(routes) : routes
+        else
+          error "Routes table was not found"
+        end
+      end
+    end
 
-#     block_given? ? yield(unmapped) : unmapped
-#   end
-# end
+    private
 
-# def delete_route(domain, host = nil, flags = {}, &block)
-#   options = host ? { n: host } : {}
+    def build_route_info(rows)
+      routes = []
 
-#   # f: nil because -f is a flag (doesn't take a value)
-#   options.merge!(f: nil) if flags[:force]
+      rows.each do |row|
+        routes << CfScript::RouteInfo.new(
+          row[:space].value,
+          row[:host].value,
+          row[:domain].value,
+          row[:apps].to_a
+        )
+      end
 
-#   run_cf :delete_route, domain, options do |output|
-#     deleted = output.ok?
-
-#     block_given? ? yield(deleted) : deleted
-#   end
-# end
+      routes
+    end
+  end
 end

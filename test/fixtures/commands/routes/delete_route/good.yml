@@ -1,0 +1,8 @@
+---
+stdout: |
+  Deleting route example.com...
+  OK
+
+stderr: ''
+status:
+  exitstatus: 0

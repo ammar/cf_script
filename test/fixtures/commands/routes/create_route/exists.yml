@@ -1,0 +1,9 @@
+---
+stdout: |
+  Creating route example.com for org ACME / space development as user@example.com...
+  OK
+  Route example.com already exists
+
+stderr: ''
+status:
+  exitstatus: 0

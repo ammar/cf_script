@@ -1,0 +1,8 @@
+---
+stdout: |
+  Removing route api.example.com from app api in org ACME / space development as user@example.com...
+  OK
+
+stderr: ''
+status:
+  exitstatus: 0

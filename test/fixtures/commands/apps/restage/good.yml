@@ -1,0 +1,48 @@
+---
+stdout: |
+  Restaging app worker in org ACME / space development as user@example.com...
+  Creating container
+  Successfully created container
+  Downloading app package...
+  Downloaded app package (255B)
+  Downloading buildpacks (https://github.com/cloudfoundry/binary-buildpack.git), build artifacts cache...
+  Downloading build artifacts cache...
+  Downloaded build artifacts cache (108B)
+  Downloaded buildpacks
+  Staging...
+  Exit status 0
+  Staging complete
+  Uploading droplet, build artifacts cache...
+  Uploading droplet...
+  Uploading build artifacts cache...
+  Uploaded build artifacts cache (108B)
+  Uploaded droplet (357B)
+  Uploading complete
+  
+  1 of 1 instances running
+  
+  App started
+  
+  
+  OK
+  
+  App email-worker was started using this command `./worker`
+  
+  Showing health and status for app worker in org ACME / space development as user@example.com...
+  OK
+  
+  requested state: started
+  instances: 1/2
+  usage: 4M x 1 instances
+  urls:
+  last uploaded: Wed Dec 24 23:59:00 UTC 2015
+  stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/binary-buildpack.git
+  
+       state     since                    cpu     memory          disk          details
+  #0   running   2015-12-25 00:00:00 AM   42.0%   12.3M of 256M   45.6M of 1G
+  #1   stopped   2015-12-25 00:00:00 AM   0.0%    0M of 256M      45.6M of 1G
+
+stderr: ''
+status:
+  exitstatus: 0

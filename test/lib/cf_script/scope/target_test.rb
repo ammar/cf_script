@@ -143,14 +143,14 @@ describe CfScript::Scope::Target do
     end
   end
 
-  it "calls apps.filter! when options is not empty" do
+  it "calls apps.select! when options is not empty" do
     assert subject.respond_to?(:apps)
 
     apps = MiniTest::Mock.new
-    apps.expect(:filter!, apps, [{ foo: :bar }])
+    apps.expect(:select!, apps, [{ ending_with: :foo }])
 
     CfScript::Command.stub :run, apps do
-      subject.apps(foo: :bar)
+      subject.apps(ending_with: :foo)
     end
 
     apps.verify

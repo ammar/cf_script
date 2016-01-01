@@ -27,6 +27,7 @@ if ENV['REPORTER']
 end
 
 require 'pry'
+require_relative './support/assertions'
 require_relative './support/helpers'
 require_relative './support/shared_examples'
 

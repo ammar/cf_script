@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe 'CheckRouteCommand' do
+describe 'MapRouteCommand' do
   include MockExecution
 
   let(:command) { CfScript::Command::Routes::MapRouteCommand.instance }

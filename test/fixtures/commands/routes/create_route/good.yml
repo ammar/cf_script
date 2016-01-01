@@ -1,0 +1,8 @@
+---
+stdout: |
+  Creating route example.com for org ACME / space development as user@example.com...
+  OK
+
+stderr: ''
+status:
+  exitstatus: 0
