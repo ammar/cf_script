@@ -1,4 +1,4 @@
-# CfScript [![Gem Version](https://img.shields.io/gem/v/cf_script.svg)](https://rubygems.org/gems/cf_script)
+# CfScript [![Gem Version](https://img.shields.io/gem/v/cf_script.svg)](https://rubygems.org/gems/cf_script) [![Build Status](https://secure.travis-ci.org/ammar/cf_script.png?branch=master)](http://travis-ci.org/ammar/cf_script)
 
 CfScript is a DSL for scripting and automating the Cloud Foundry CLI.
 
