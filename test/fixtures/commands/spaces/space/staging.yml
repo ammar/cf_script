@@ -1,0 +1,16 @@
+---
+stdout: |
+  Getting info for space staging in org ACME as user@example.com...
+  OK
+  
+  staging
+       Org:               ACME
+       Apps:              org-frontend-staging, org-backend-staging
+       Domains:           cf.io, example.com
+       Services:          org-db, org-cache
+       Security Groups:   ssh, dns, log
+       Space Quota:
+
+stderr: ''
+status:
+  exitstatus: 0

@@ -1,0 +1,10 @@
+---
+stdout: |
+  API endpoint: https://api.example.com
+  Authenticating...
+  FAILED
+  Credentials were rejected, please try again.
+
+stderr: ''
+status:
+  exitstatus: 1

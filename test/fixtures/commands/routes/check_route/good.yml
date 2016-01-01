@@ -1,0 +1,9 @@
+---
+stdout: |
+  Checking for route...
+  OK
+  Route api.example.com does exist
+
+stderr: ''
+status:
+  exitstatus: 0

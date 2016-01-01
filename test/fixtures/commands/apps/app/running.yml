@@ -1,0 +1,19 @@
+---
+stdout: |
+  Showing health and status for app email-worker in org ACME / space staging as user@example.com...
+  OK
+  
+  requested state: started
+  instances: 1/1
+  usage: 32M x 1 instances
+  urls:
+  last uploaded: Tue Dec 15 22:22:28 UTC 2015
+  stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/binary-buildpack.git
+  
+       state     since                    cpu    memory      disk          details
+  #0   running   2015-12-22 08:49:38 AM   0.0%   2M of 32M   27.8M of 1G
+
+stderr: ''
+status:
+  exitstatus: 0

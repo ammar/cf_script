@@ -1,0 +1,9 @@
+---
+stdout: |
+  Removing env variable SOME_NAME from app worker in org ACME / space development as user@example.com...
+  OK
+  TIP: Use 'cf restage' to ensure your env variable changes take effect
+
+stderr: ''
+status:
+  exitstatus: 0

@@ -1,0 +1,7 @@
+---
+stdout: |
+  API endpoint: https://api.cf.io (API version: 1.0.0)
+
+stderr: ''
+status:
+  exitstatus: 0

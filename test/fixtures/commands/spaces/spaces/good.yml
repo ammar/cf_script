@@ -1,0 +1,12 @@
+---
+stdout: |
+  Getting spaces in org ACME as user@example.com...
+  
+  name
+  development
+  staging
+  production
+
+stderr: ''
+status:
+  exitstatus: 0

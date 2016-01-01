@@ -1,0 +1,9 @@
+---
+stdout: |
+  Setting api endpoint to https://example.com...
+  FAILED
+  Server error, status code: 404, error code: 0, message:
+
+stderr: ''
+status:
+  exitstatus: 0

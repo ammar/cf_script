@@ -1,0 +1,11 @@
+---
+stdout: |
+  No API endpoint set. Use 'cf login' or 'cf api' to target an endpoint.
+  
+  User:    user@example.com
+  Org:     ACME
+  Space:   No space targeted, use 'cf target -s SPACE'
+
+stderr: ''
+status:
+  exitstatus: 0

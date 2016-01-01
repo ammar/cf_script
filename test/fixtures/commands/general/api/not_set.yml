@@ -1,0 +1,7 @@
+---
+stdout: |
+  No api endpoint set. Use 'cf api' to set an endpoint
+
+stderr: ''
+status:
+  exitstatus: 0

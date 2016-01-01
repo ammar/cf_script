@@ -1,0 +1,98 @@
+---
+stdout: |
+  Starting app frontend in org ACME / space development as user@example.com...
+  Creating container
+  Successfully created container
+  Downloading app package...
+  Downloaded app package (31K)
+  No buildpack specified; fetching standard buildpacks to detect and build your application.
+  Downloading buildpacks (staticfile_buildpack, java_buildpack, ruby_buildpack, nodejs_buildpack, go_buildpack, python_buildpack, php_buildpack, liberty_buildpack, binary_buildpack), build artifacts cache...
+  Downloading nodejs_buildpack...
+  Downloading staticfile_buildpack...
+  Downloading java_buildpack...
+  Downloading go_buildpack...
+  Downloaded java_buildpack
+  Downloading liberty_buildpack...
+  Downloaded staticfile_buildpack
+  Downloading python_buildpack...
+  Downloading php_buildpack...
+  Downloaded nodejs_buildpack
+  Downloading ruby_buildpack...
+  Downloaded liberty_buildpack
+  Downloading binary_buildpack...
+  Downloaded binary_buildpack
+  Downloading build artifacts cache...
+  Downloaded php_buildpack
+  Downloaded ruby_buildpack
+  Downloaded build artifacts cache (23.7M)
+  Downloaded buildpacks
+  Staging...
+  cat: ../VERSION: No such file or directory
+  -------> Buildpack version 1.6.9
+  			 Downloaded [file:///tmp/buildpacks/7fd367595cc31484469444925764759b/dependencies/https___pivotal-buildpacks.s3.amazonaws.com_ruby_binaries_shared_bundler-1.9.7.tgz]
+  -----> Compiling Ruby/Rails
+  			 Downloaded [file:///tmp/buildpacks/7fd367595cc31484469444925764759b/dependencies/https___pivotal-buildpacks.s3.amazonaws.com_concourse-binaries_ruby_ruby-2.2.3-linux-x64.tgz]
+  -----> Using Ruby version: ruby-2.2.3
+  -----> Installing dependencies using bundler 1.9.7
+  			 Downloaded [file:///tmp/buildpacks/7fd367595cc31484469444925764759b/dependencies/https___pivotal-buildpacks.s3.amazonaws.com_ruby_binaries_cflinuxfs2_libyaml-0.1.6.tgz]
+  			 Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
+  			 Using json 1.8.3
+  			 Using rake 10.4.2
+  			 Using minitest 5.8.3
+  			 Using rack 1.6.4
+  			 Using mime-types 2.99
+  			 Using bundler 1.9.7
+  			 Using mail 2.6.3
+  			 Bundle complete! 12 Gemfile dependencies, 49 gems now installed.
+  			 Gems in the groups development and test were not installed.
+  			 Bundled gems are installed into ./vendor/bundle.
+  			 Bundle completed (0.38s)
+  			 Cleaning up the bundler cache.
+  			 Downloaded [file:///tmp/buildpacks/7fd367595cc31484469444925764759b/dependencies/https___pivotal-buildpacks.s3.amazonaws.com_node_beta-binaries_node-0.12.7-linux-x64.tar.gz]
+  -----> Preparing app for Rails asset pipeline
+  			 Running: rake assets:precompile
+  			 Cleaning assets
+  			 Running: rake assets:clean
+  ###### WARNING:
+  			 You have not declared a Ruby version in your Gemfile.
+  			 To set your Ruby version add this line to your Gemfile:
+  			 ruby '2.2.3'
+  			 # See https://devcenter.heroku.com/articles/ruby-versions for more information.
+  ###### WARNING:
+  			 No Procfile detected, using the default web server (webrick)
+  			 https://devcenter.heroku.com/articles/ruby-default-web-server
+  Staging complete
+  Uploading droplet, build artifacts cache...
+  Uploading droplet...
+  Uploading build artifacts cache...
+  Uploaded build artifacts cache (23.6M)
+  Uploaded droplet (29M)
+  Uploading complete
+  
+  1 of 2 instances running
+  
+  App started
+  
+  
+  OK
+  
+  App frontend was started using this command `bin/rails server -p $PORT -e $RAILS_ENV`
+  
+  Showing health and status for app frontend in org ACME / space development as user@example.com...
+  OK
+  
+  requested state: started
+  instances: 1/2
+  usage: 256M x 1 instances
+  urls:
+  last uploaded: Sat Dec 24 23:59:00 UTC 2015
+  stack: cflinuxfs2
+  buildpack: ruby
+  
+       state     since                    cpu     memory          disk          details
+  #0   running   2015-12-25 00:00:00 AM   42.0%   12.3M of 256M   45.6M of 1G
+  #1   stopped   2015-12-25 00:00:00 AM   0.0%    0M of 256M      45.6M of 1G
+
+stderr: ''
+status:
+  exitstatus: 0

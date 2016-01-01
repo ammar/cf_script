@@ -1,0 +1,18 @@
+---
+stdout: |
+  Showing health and status for app email-worker in org ACME / space staging as user@example.com...
+  OK
+
+  requested state: stopped
+  instances: 0/1
+  usage: 32M x 1 instances
+  urls:
+  last uploaded: Fri Dec 25 00:00:00 UTC 2015
+  stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/binary-buildpack.git
+
+  There are no running instances of this app.
+
+stderr: ''
+status:
+  exitstatus: 0

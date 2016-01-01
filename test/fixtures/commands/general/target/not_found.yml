@@ -1,0 +1,9 @@
+---
+stdout: |
+  FAILED
+  Unable to access space bogus.
+  Space not_found not found
+
+stderr: ''
+status:
+  exitstatus: 0

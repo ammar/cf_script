@@ -1,0 +1,10 @@
+---
+stdout: |
+  Creating route syntax.cfapps.io for org ACME / space development as user@example.com...
+  OK
+  Adding route api.example.com to app frontend in org ACME / space development as user@example.com...
+  OK
+
+stderr: ''
+status:
+  exitstatus: 0

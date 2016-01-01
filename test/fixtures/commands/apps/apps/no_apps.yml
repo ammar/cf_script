@@ -1,0 +1,10 @@
+---
+stdout: |
+  Getting apps in org ACME / space development as user@example.com...
+  OK
+  
+  No apps found
+
+stderr: ''
+status:
+  exitstatus: 0

@@ -1,0 +1,9 @@
+---
+stdout: |
+  Setting api endpoint to ...
+  FAILED
+  Error performing request: Get http:///v2/info: http: no Host in request URL
+
+stderr: ''
+status:
+  exitstatus: 0

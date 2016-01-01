@@ -1,0 +1,60 @@
+---
+stdout: |
+  Updating app development-worker in org ACME / space development as user@example.com...
+  OK
+  
+  App development-worker is a worker, skipping route creation
+  Uploading development-worker...
+  Uploading app files from: /path/to/app
+  Uploading 12M, 345 files
+  Done uploading
+  OK
+  
+  Stopping app development-worker in org ACME / space development as user@example.com...
+  OK
+  
+  Starting app development-worker in org ACME / space development as user@example.com...
+  Creating container
+  Successfully created container
+  Downloading app package...
+  Downloaded app package (411B)
+  Downloading buildpacks (https://github.com/cloudfoundry/binary-buildpack.git), build artifacts cache...
+  Downloading build artifacts cache...
+  Downloaded build artifacts cache (108B)
+  Downloaded buildpacks
+  Staging...
+  Exit status 0
+  Staging complete
+  Uploading droplet, build artifacts cache...
+  Uploading droplet...
+  Uploading build artifacts cache...
+  Uploaded build artifacts cache (108B)
+  Uploaded droplet (401B)
+  Uploading complete
+  
+  1 of 1 instances running
+  
+  App started
+  
+  
+  OK
+  
+  App development-worker was started using this command `./worker`
+  
+  Showing health and status for app development-worker in org ACME / space development as user@example.com...
+  OK
+  
+  requested state: started
+  instances: 1/1
+  usage: 8M x 1 instances
+  urls:
+  last uploaded: Wed Dec 23 03:07:26 UTC 2015
+  stack: cflinuxfs2
+  buildpack: https://github.com/cloudfoundry/binary-buildpack.git
+  
+       state     since                    cpu    memory       disk          details
+  \#0   running   2015-12-23 05:07:42 AM   0.0%   2.2M of 8M   27.8M of 1G
+
+stderr: ''
+status:
+  exitstatus: 0

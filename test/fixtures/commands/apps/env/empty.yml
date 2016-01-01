@@ -1,0 +1,37 @@
+---
+stdout: |
+  Getting env variables for app email-worker in org ACME / space staging as user@example.com...
+  OK
+  
+  System-Provided:
+  
+  
+  {
+   "VCAP_APPLICATION": {
+    "application_id": "00000000-0000-0000-0000-000000000000",
+    "application_name": "email-worker",
+    "application_uris": [],
+    "application_version": "00000000-0000-0000-0000-000000000000",
+    "limits": {
+     "disk": 1024,
+     "fds": 16384,
+     "mem": 4
+    },
+    "name": "email-worker",
+    "space_id": "00000000-0000-0000-0000-000000000000",
+    "space_name": "staging",
+    "uris": [],
+    "users": null,
+    "version": "00000000-0000-0000-0000-000000000000"
+   }
+  }
+  
+  No user-defined env variables have been set
+  
+  No running env variables have been set
+  
+  No staging env variables have been set
+
+stderr: ''
+status:
+  exitstatus: 0

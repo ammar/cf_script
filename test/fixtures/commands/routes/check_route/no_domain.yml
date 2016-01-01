@@ -1,0 +1,9 @@
+---
+stdout: |
+  Checking for route...
+  FAILED
+  Domain example.com not found
+
+stderr: ''
+status:
+  exitstatus: 0

@@ -1,0 +1,10 @@
+---
+stdout: |
+  API endpoint:   https://api.cf.io (API version: 1.0.0)
+  User:           user@example.com
+  Org:            ACME
+  Space:          No space targeted, use 'cf target -s SPACE'
+
+stderr: ''
+status:
+  exitstatus: 0

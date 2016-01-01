@@ -1,0 +1,14 @@
+*.DS_Store
+
+.env
+.ruby-version
+.editorconfig
+
+Gemfile.lock
+
+pkg/*
+coverage/
+.bundle/*
+vendor/
+
+sandbox/

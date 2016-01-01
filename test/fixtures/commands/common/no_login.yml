@@ -1,0 +1,8 @@
+---
+stdout: |
+  API endpoint:   https://api.example.com (API version: 1.0.0)
+  Not logged in. Use 'cf login' to log in.
+
+stderr: ''
+status:
+  exitstatus: 0

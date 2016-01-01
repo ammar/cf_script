@@ -1,0 +1,7 @@
+---
+stdout: |
+  API endpoint: https://api.test.com (API version: 1.2.3)
+
+stderr: ''
+status:
+  exitstatus: 0

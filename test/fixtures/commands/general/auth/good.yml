@@ -1,0 +1,10 @@
+---
+stdout: |
+  API endpoint: https://api.example.com
+  Authenticating...
+  OK
+  Use 'cf target' to view or set your target org and space
+
+stderr: ''
+status:
+  exitstatus: 0

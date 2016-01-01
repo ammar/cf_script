@@ -1,0 +1,23 @@
+---
+stdout: |
+  API endpoint: https://api.run.pivotal.io
+  Authenticating...
+  Credentials were rejected, please try again.
+  
+  Password>
+  Authenticating...
+  Credentials were rejected, please try again.
+  
+  Password>
+  Authenticating...
+  Credentials were rejected, please try again.
+  FAILED
+  Unable to authenticate.
+  
+  
+  API endpoint:   https://api.run.pivotal.io (API version: 2.44.0)
+  Not logged in. Use 'cf login' to log in.
+
+stderr: ''
+status:
+  exitstatus: 1
