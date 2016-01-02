@@ -103,11 +103,11 @@ describe CfScript::AppInfo do
     assert_respond_to info, :stopped?
     assert_respond_to info, :cold?
 
-    assert info.started?
-    assert info.hot?
+    assert_equal true, info.started?
+    assert_equal true, info.hot?
 
-    refute info.stopped?
-    refute info.cold?
+    refute_equal true, info.stopped?
+    refute_equal true, info.cold?
   end
 
   it "defines set_intance_status method that takes attribute lists and builds InstanceStatus objects" do

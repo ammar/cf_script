@@ -33,8 +33,10 @@ describe CfScript::Output::Parser::Section do
 
   describe "parse_section_attributes" do
     it "calls parse_attribute_list" do
-      parser.stub :parse_attribute_list, 'called' do
-        assert_equal 'called', parser.parse_section_attributes(text_buffer, 'Section Title')
+      parser.stub :parse_attribute_list, :called do
+        assert_equal :called, parser.parse_section_attributes(
+          text_buffer, 'Section Title'
+        )
       end
     end
 

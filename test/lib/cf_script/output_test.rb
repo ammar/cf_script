@@ -21,12 +21,12 @@ describe CfScript::Output do
   end
 
   it "responds to good? and returns true if exit status == 0" do
-    assert output.respond_to?(:good?)
-    assert output.good?
+    assert output.respond_to?(:good?), "Expected Output to respond to good?"
+    assert_equal true, output.good?
   end
 
   it "responds to good? and returns false if exit status != 0" do
-    refute fake_output('', '', 1).good?
+    refute_equal true, fake_output('', '', 1).good?
   end
 
   it "responds to out and returns a Buffer object" do
@@ -43,10 +43,11 @@ describe CfScript::Output do
 
   describe "attributes" do
     it "calls parse_attribute_list" do
-      assert output.respond_to?(:attributes)
+      assert output.respond_to?(:attributes),
+        "Expected Output to respond to attributes"
 
-      output.stub :parse_attribute_list, 'called' do
-        assert_equal 'called', output.attributes
+      output.stub :parse_attribute_list, :called do
+        assert_equal :called, output.attributes
       end
     end
 
@@ -58,10 +59,11 @@ describe CfScript::Output do
 
   describe "line_attributes" do
     it "calls parse_line_attributes" do
-      assert output.respond_to?(:line_attributes)
+      assert output.respond_to?(:line_attributes),
+        "Expected Output to respond to line_attributes"
 
-      output.stub :parse_line_attributes, 'called' do
-        assert_equal 'called', output.line_attributes(/a/)
+      output.stub :parse_line_attributes, :called do
+        assert_equal :called, output.line_attributes(/a/)
       end
     end
 
@@ -87,10 +89,11 @@ describe CfScript::Output do
     end
 
     it "calls parse_attribute_list" do
-      assert output.respond_to?(:attributes_from)
+      assert output.respond_to?(:attributes_from),
+        "Expected Output to respond to attributes_from"
 
-      output.stub :parse_attribute_list, 'called' do
-        assert_equal 'called', output.attributes_from('two')
+      output.stub :parse_attribute_list, :called do
+        assert_equal :called, output.attributes_from('two')
       end
     end
 
@@ -106,10 +109,11 @@ describe CfScript::Output do
 
   describe "table" do
     it "calls parse_table" do
-      assert output.respond_to?(:table)
+      assert output.respond_to?(:table),
+        "Expected Output to respond to table"
 
-      output.stub :parse_table, 'called' do
-        assert_equal 'called', output.table([])
+      output.stub :parse_table, :called do
+        assert_equal :called, output.table([])
       end
     end
 
@@ -124,10 +128,11 @@ describe CfScript::Output do
 
   describe "section_attributes" do
     it "calls parse_section_attributes" do
-      assert output.respond_to?(:section_attributes)
+      assert output.respond_to?(:section_attributes),
+        "Expected Output to respond to section_attributes"
 
-      output.stub :parse_section_attributes, 'called' do
-        assert_equal 'called', output.section_attributes('header')
+      output.stub :parse_section_attributes, :called do
+        assert_equal :called, output.section_attributes('header')
       end
     end
   end

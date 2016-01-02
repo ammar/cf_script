@@ -13,7 +13,7 @@ describe 'StopCommand' do
 
   it "returns true on success" do
     fake_cf do
-      assert command.run(:worker)
+      assert_equal true, command.run(:worker)
     end
   end
 
@@ -27,7 +27,7 @@ describe 'StopCommand' do
 
   it "returns false when the app is not found" do
     fake_cf stop: :not_found do |stdout, stderr|
-      refute command.run(:bogus)
+      assert_equal false, command.run(:bogus)
 
       assert_match /\{stop\} failed to stop/, stderr.lines.first
     end

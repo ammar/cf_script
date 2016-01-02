@@ -12,6 +12,7 @@ module CfScript::Command
           block_given? ? yield(true) : true
         else
           error "failed to stop"
+          return false
         end
       end
     end

@@ -12,11 +12,13 @@ describe CfScript::Scope do
   end
 
   it "calls enter_scope on initialize" do
-    assert ScopeTest.new.called_enter_scope
+    assert ScopeTest.new.called_enter_scope,
+      "Expected enter_scope to have been called"
   end
 
   it "responds to finalize which calls exit_scope" do
-    assert subject.respond_to?(:finalize)
+    assert subject.respond_to?(:finalize),
+      "Expected Scope::Base to respond to finalize"
 
     subject.stub :exit_scope, 'foo' do
       assert_equal 'foo', subject.finalize
@@ -24,15 +26,17 @@ describe CfScript::Scope do
   end
 
   it "responds to spec_for and calls CfScript.spec_for" do
-    assert subject.respond_to?(:spec_for)
+    assert subject.respond_to?(:spec_for),
+      "Expected Scope::Base to respond to spec_for"
 
-    CfScript.stub :spec_for, 'called' do
-      assert_equal 'called', subject.spec_for(:app)
+    CfScript.stub :spec_for, :called do
+      assert_equal :called, subject.spec_for(:app)
     end
   end
 
   it "responds to method_missing and calls Command.run" do
-    assert subject.respond_to?(:method_missing)
+    assert subject.respond_to?(:method_missing),
+      "Expected Scope::Base to respond to method_missing"
 
     CfScript::Command.stub :run, 'pong' do
       assert_equal 'pong', subject.ping

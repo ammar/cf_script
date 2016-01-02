@@ -21,14 +21,15 @@ describe CfScript::Scope::Script do
       script = CfScript::Scope::Script.new
     end
 
-    assert script.respond_to?(:run)
+    assert script.respond_to?(:run), "Expected Scope::Script to respond to run"
 
     arg_catcher = lambda do |scope, args, &block|
       assert_same script, scope
+      return :called
     end
 
     script.stub :exec_in, arg_catcher do
-      assert script.run { nil }
+      assert_equal :called, script.run { nil }
     end
   end
 

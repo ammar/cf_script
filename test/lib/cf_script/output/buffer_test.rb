@@ -13,17 +13,17 @@ describe CfScript::Output::Buffer do
   end
 
   it "responds to raw and returns a original text" do
-    assert buffer.respond_to?(:raw)
+    assert buffer.respond_to?(:raw), "Expected Buffer to respond to raw"
     assert_equal raw_text, buffer.raw
   end
 
   it "responds to content and returns a sanitized copy" do
-    assert buffer.respond_to?(:content)
+    assert buffer.respond_to?(:content), "Expected Buffer to respond to content"
     assert_equal "line 1\nline 2\nline 3\n", buffer.content
   end
 
   it "responds to lines and returns sanitized lines" do
-    assert buffer.respond_to?(:lines)
+    assert buffer.respond_to?(:lines), "Expected Buffer to respond to lines"
     assert_equal ['line 1', 'line 2', 'line 3'], buffer.lines
   end
 
@@ -57,17 +57,17 @@ describe CfScript::Output::Buffer do
   end
 
   it "responds to matches? and returns true or false" do
-    assert buffer.matches?(/2/)
-    refute buffer.matches?(/4/)
+    assert_equal true, buffer.matches?(/2/)
+    refute_equal true, buffer.matches?(/4/)
   end
 
   it "responds to contains? and returns true or false" do
-    assert buffer.contains?('2')
-    refute buffer.contains?('4')
+    assert_equal true, buffer.contains?('2')
+    refute_equal true, buffer.contains?('4')
   end
 
   it "responds to last_line_matches? and returns true or false" do
-    assert buffer.last_line_matches?(/3/)
-    refute buffer.last_line_matches?(/4/)
+    assert_equal true, buffer.last_line_matches?(/3/)
+    refute_equal true, buffer.last_line_matches?(/4/)
   end
 end

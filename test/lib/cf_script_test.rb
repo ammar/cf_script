@@ -4,7 +4,7 @@ describe CfScript do
   include MockExecution
 
   it "defines a config method that returns the Config object" do
-    assert CfScript.respond_to? :config
+    assert CfScript.respond_to? :config, "Expected CfScript to respond to config"
 
     config = CfScript.config
 
@@ -13,7 +13,7 @@ describe CfScript do
   end
 
   it "defines a configure method that yields the Config object" do
-    assert CfScript.respond_to? :configure
+    assert CfScript.respond_to? :configure, "Expected CfScript to respond to configure"
 
     called = false
 
@@ -28,10 +28,10 @@ describe CfScript do
   end
 
   it "defines stdout/stderr methods that return the configured IO objects" do
-    assert CfScript.respond_to? :stdout
+    assert CfScript.respond_to? :stdout, "Expected CfScript to respond to stdout"
     assert_same CfScript.config.io.stdout, CfScript.stdout
 
-    assert CfScript.respond_to? :stderr
+    assert CfScript.respond_to? :stderr, "Expected CfScript to respond to stderr"
     assert_same CfScript.config.io.stderr, CfScript.stderr
   end
 
@@ -64,10 +64,16 @@ describe CfScript do
   end
 
   it "doesn't expose private methods" do
-    refute CfScript.respond_to?(:stack_level)
-    assert CfScript.singleton_class.private_method_defined?(:stack_level)
+    refute CfScript.respond_to?(:stack_level),
+      "Expected CfScript not to respond to stack_level"
 
-    refute CfScript.respond_to?(:print_error)
-    assert CfScript.singleton_class.private_method_defined?(:print_error)
+    assert CfScript.singleton_class.private_method_defined?(:stack_level),
+      "Expected CfScript singleton to respond to stack_level"
+
+    refute CfScript.respond_to?(:print_error),
+      "Expected CfScript not to respond to print_error"
+
+    assert CfScript.singleton_class.private_method_defined?(:print_error),
+      "Expected CfScript singleton to respond to print_error"
   end
 end

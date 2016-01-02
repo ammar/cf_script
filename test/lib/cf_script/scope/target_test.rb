@@ -17,8 +17,8 @@ describe CfScript::Scope::Target do
     initial_target = subject.instance_variable_get('@initial_target')
     current_target = subject.instance_variable_get('@current_target')
 
-    assert initial_target
-    assert current_target
+    assert initial_target, "Expected @initial_target to be set"
+    assert current_target, "Expected @current_target to be set"
 
     assert_instance_of CfScript::Target, initial_target
     assert_instance_of CfScript::Target, current_target
@@ -66,7 +66,8 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to target without args and calls Command.run" do
-    assert subject.respond_to?(:target)
+    assert subject.respond_to?(:target),
+      "Expected Scope::Target to respond to target"
 
     CfScript::Command.stub :run, :called do
       assert_equal :called, subject.target
@@ -74,8 +75,6 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to target with a space name and calls Command.run if not == current" do
-    assert subject.respond_to?(:target)
-
     assert_equal 'staging', subject.current_space
 
     CfScript::Command.stub :run, :called do
@@ -92,7 +91,8 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to space and calls Command.run" do
-    assert subject.respond_to?(:space)
+    assert subject.respond_to?(:space),
+      "Expected Scope::Target to respond to space"
 
     CfScript::Command.stub :run, :called do
       assert_equal :called, subject.space(:foo)
@@ -100,8 +100,6 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to space with a block and calls exec_in with a Space scope" do
-    assert subject.respond_to?(:space)
-
     arg_catcher = lambda do |scope, args, &block|
       assert_instance_of CfScript::Scope::Space, scope
     end
@@ -114,7 +112,8 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to app and calls Command.run" do
-    assert subject.respond_to?(:app)
+    assert subject.respond_to?(:app),
+      "Expected Scope::Target to respond to app"
 
     CfScript::Command.stub :run, :called do
       assert_equal :called, subject.app(:foo)
@@ -122,8 +121,6 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to app with a block and calls exec_in with an App scope" do
-    assert subject.respond_to?(:app)
-
     arg_catcher = lambda do |scope, args, &block|
       assert_instance_of CfScript::Scope::App, scope
     end
@@ -136,7 +133,8 @@ describe CfScript::Scope::Target do
   end
 
   it "responds to apps and calls Command.run" do
-    assert subject.respond_to?(:apps)
+    assert subject.respond_to?(:apps),
+      "Expected Scope::Target to respond to apps"
 
     CfScript::Command.stub :run, :called do
       assert_equal :called, subject.apps
@@ -144,10 +142,12 @@ describe CfScript::Scope::Target do
   end
 
   it "calls apps.select! when options is not empty" do
-    assert subject.respond_to?(:apps)
-
     apps = MiniTest::Mock.new
-    apps.expect(:select!, apps, [{ ending_with: :foo }])
+    apps.expect(:org, nil, [])
+    apps.expect(:org, nil, [])
+    apps.expect(:space, nil, [])
+    apps.expect(:space, nil, [])
+    apps.expect(:select!, nil, [{ ending_with: :foo }])
 
     CfScript::Command.stub :run, apps do
       subject.apps(ending_with: :foo)
