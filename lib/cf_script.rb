@@ -20,7 +20,6 @@ module CfScript
     attr_accessor :cf_call_stack
   end
 
- #extend CfScript::Context
   extend CfScript::Scope::Execution
   extend CfScript::UI
 
