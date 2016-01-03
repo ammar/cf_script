@@ -1,6 +1,5 @@
 require_relative './cf_script/version'
 require_relative './cf_script/config'
-require_relative './cf_script/callbacks'
 require_relative './cf_script/utils'
 require_relative './cf_script/ui'
 require_relative './cf_script/output'
