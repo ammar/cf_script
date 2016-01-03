@@ -1,6 +1,6 @@
 # CfScript [![Gem Version](https://img.shields.io/gem/v/cf_script.svg)](https://rubygems.org/gems/cf_script) [![Build Status](https://secure.travis-ci.org/ammar/cf_script.png?branch=master)](http://travis-ci.org/ammar/cf_script)
 
-CfScript is a DSL for scripting and automating the Cloud Foundry CLI.
+CfScript is a DSL for scripting and automating the Cloud Foundry CLI, with a focus on application deployment and management. [See Supported Commands](#supported-commands)
 
 ```ruby
 # example.rb
@@ -108,7 +108,7 @@ an application name as their first argument can be called without it.
 cf do
   app :api do
     env.each do |name, value|
-      unset_env name, value
+      unset_env name
     end
 
     started? ? restart : start
@@ -120,34 +120,34 @@ end
 ## Supported Commands
 
 | Commands                              | CLI command                                             | &#x22ef; |
-| ------------------------------------- | ------------------------------------------------------- |:--------:|
-| **General**                           |                                                         | &#x22f1; |
-| &emsp;&nbsp;_**api**_                 | `cf api URL`                                            | &#x2713; |
-| &emsp;&nbsp;_**auth**_                | `cf auth USER PASSWORD`                                 | &#x2713; |
-| &emsp;&nbsp;_**login**_               | `cf login -u USER -p PASSWORD [OPTIONS]`                | &#x2713; |
-| &emsp;&nbsp;_**logout**_              | `cf logout`                                             | &#x2713; |
-| &emsp;&nbsp;_**target**_              | `cf target [-s SPACE -o ORG]`                           | &#x2713; |
-| **Applications**                      |                                                         | &#x22f1; |
-| &emsp;&nbsp;_**apps**_                | `cf apps`                                               | &#x2713; |
-| &emsp;&nbsp;_**app**_                 | `cf app APP_NAME`                                       | &#x2713; |
-| &emsp;&nbsp;_**start**_               | `cf start APP_NAME`                                     | &#x2713; |
-| &emsp;&nbsp;_**stop**_                | `cf stop APP_NAME`                                      | &#x2713; |
-| &emsp;&nbsp;_**restart**_             | `cf restart APP_NAME`                                   | &#x2713; |
-| &emsp;&nbsp;_**push**_                | `cf push APP_NAME [OPTIONS]`                            | &#x2713; |
-| &emsp;&nbsp;_**restage**_             | `cf restage APP_NAME`                                   | &#x2713; |
-| &emsp;&nbsp;_**env**_                 | `cf env APP_NAME`                                       | &#x2713; |
-| &emsp;&nbsp;_**set-env**_             | `cf set-env APP_NAME VAR_NAME VAR_VALUE`                | &#x2713; |
-| &emsp;&nbsp;_**unset-env**_           | `cf unset-env APP_NAME VAR_NAME`                        | &#x2713; |
-| **Routes**                            |                                                         | &#x22f1; |
-| &emsp;&nbsp;_**routes**_              | `cf routes`                                             | &#x2713; |
-| &emsp;&nbsp;_**check-route**_         | `cf check-route HOST DOMAIN`                            | &#x2713; |
-| &emsp;&nbsp;_**create-route**_        | `cf create-route SPACE DOMAIN [-n HOSTNAME]`            | &#x2713; |
-| &emsp;&nbsp;_**map-route**_           | `cf map-route APP_NAME DOMAIN [-n HOSTNAME]`            | &#x2713; |
-| &emsp;&nbsp;_**unmap-route**_         | `cf unmap-route APP_NAME DOMAIN [-n HOSTNAME]`          | &#x2713; |
-| &emsp;&nbsp;_**delete-route**_        | `cf delete-route DOMAIN [-n HOSTNAME] [-f]`             | &#x2713; |
-| **Spaces**                            |                                                         | &#x22f1; |
-| &emsp;&nbsp;_**spaces**_              | `cf spaces`                                             | &#x2713; |
-| &emsp;&nbsp;_**space**_               | `cf space SPACE`                                        | &#x2713; |
+|:--------------------------------------|:--------------------------------------------------------|:--------:|
+| _**General**_                         |                                                         |          |
+| &emsp;&nbsp;api                       | `cf api URL`                                            | &#x2713; |
+| &emsp;&nbsp;auth                      | `cf auth USER PASSWORD`                                 | &#x2713; |
+| &emsp;&nbsp;login                     | `cf login -u USER -p PASSWORD [OPTIONS]`                | &#x2713; |
+| &emsp;&nbsp;logout                    | `cf logout`                                             | &#x2713; |
+| &emsp;&nbsp;target                    | `cf target [-s SPACE -o ORG]`                           | &#x2713; |
+| _**Applications**_                    |                                                         |          |
+| &emsp;&nbsp;apps                      | `cf apps`                                               | &#x2713; |
+| &emsp;&nbsp;app                       | `cf app APP_NAME`                                       | &#x2713; |
+| &emsp;&nbsp;start                     | `cf start APP_NAME`                                     | &#x2713; |
+| &emsp;&nbsp;stop                      | `cf stop APP_NAME`                                      | &#x2713; |
+| &emsp;&nbsp;restart                   | `cf restart APP_NAME`                                   | &#x2713; |
+| &emsp;&nbsp;push                      | `cf push APP_NAME [OPTIONS]`                            | &#x2713; |
+| &emsp;&nbsp;restage                   | `cf restage APP_NAME`                                   | &#x2713; |
+| &emsp;&nbsp;env                       | `cf env APP_NAME`                                       | &#x2713; |
+| &emsp;&nbsp;set-env                   | `cf set-env APP_NAME VAR_NAME VAR_VALUE`                | &#x2713; |
+| &emsp;&nbsp;unset-env                 | `cf unset-env APP_NAME VAR_NAME`                        | &#x2713; |
+| _**Routes**_                          |                                                         |          |
+| &emsp;&nbsp;routes                    | `cf routes`                                             | &#x2713; |
+| &emsp;&nbsp;check-route               | `cf check-route HOST DOMAIN`                            | &#x2713; |
+| &emsp;&nbsp;create-route              | `cf create-route SPACE DOMAIN [-n HOSTNAME]`            | &#x2713; |
+| &emsp;&nbsp;map-route                 | `cf map-route APP_NAME DOMAIN [-n HOSTNAME]`            | &#x2713; |
+| &emsp;&nbsp;unmap-route               | `cf unmap-route APP_NAME DOMAIN [-n HOSTNAME]`          | &#x2713; |
+| &emsp;&nbsp;delete-route              | `cf delete-route DOMAIN [-n HOSTNAME] [-f]`             | &#x2713; |
+| _**Spaces**_                          |                                                         |          |
+| &emsp;&nbsp;spaces                    | `cf spaces`                                             | &#x2713; |
+| &emsp;&nbsp;space                     | `cf space SPACE`                                        | &#x2713; |
 
 ---
 ## Building
