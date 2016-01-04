@@ -162,3 +162,20 @@ To install the gem from the cloned project, run:
 ```
 rake install
 ```
+
+---
+## Known Problems/Limitations
+
+* Obviously everything depends on the output of `cf`, so if that changes
+  things will break. An attempt to minimize this was made but there is no
+  guarantee.
+
+* The fixtures were collected manually and they are a pain to manage. Will
+  investigate creating a script that automates their collection.
+
+* I18N, n'existe pas, mais it's not impossible. If implemented, it should
+  be based on the latest [translation files from the `cf` repository](https://github.com/cloudfoundry/cli/tree/master/cf/i18n/resources),
+  and the process of pulling the files automated. Might explicity add LANG to
+  the ENV variables passed to `cf` in the meantime.
+
+* Windows? No clues. Probably not without some changes.

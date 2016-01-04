@@ -43,7 +43,7 @@ module CfScript::UI
 
     default:  "\xE2\x9E\x96",
 
-    bisque:   "🍲",
+    lobster_bisque:   "🍲", # h/t @dbelloti
   }
 
   module_function
