@@ -10,8 +10,10 @@ module CfScript::Command
 
         if vars = output.section_attributes('User-Provided')
           block_given? ? yield(vars.to_h) : vars.to_h
+        elsif output.contains?('No user-defined env variables have been set')
+          return {}
         else
-          error 'vars is nil'
+          error 'could not get environment variables'
           return {}
         end
       end
