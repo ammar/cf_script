@@ -3,7 +3,7 @@ require 'open3'
 class CfScript::Executor::NonBlocking
   include CfScript::UI
 
-  READ_SIZE = 1024
+  READ_SIZE = 4096
 
   PROGRESS_CHARS = ['|', '/', '-', '\\']
 
@@ -16,25 +16,31 @@ class CfScript::Executor::NonBlocking
     @spin_count = 0
     @executions += 1
 
-    print " ...  "
+    print " ...  " if CfScript.config.runtime.trace
     stdout, stderr, status = execute_internal(env, command_line)
 
-    report_exit(status.exitstatus == 0 ? :success : :error)
+    report_exit(status.exitstatus == 0 ? :success : :error) if CfScript.config.runtime.trace
 
     [stdout, stderr, status]
   end
 
   def spin
+    return unless CfScript.config.runtime.trace
+
     char = PROGRESS_CHARS[(@spin_count += 1) % PROGRESS_CHARS.length]
 
     print "\b#{char}".colorize(with_color_of(:step))
   end
 
-  def got(c = '@')
+  def data_read(c = '@')
+    return unless CfScript.config.runtime.trace
+
     print "\b#{c}".colorize(with_color_of(:info))
   end
 
   def report_exit(type)
+    return unless CfScript.config.runtime.trace
+
     icon = "#{emoji_for(type)}          "
     text = case type
            when :success
@@ -57,8 +63,7 @@ class CfScript::Executor::NonBlocking
       begin
         streams = [stdout, stderr]
 
-       #until streams.empty? do
-        loop do
+        until streams.empty? do
           ready = IO.select(streams, [], [], 0.1)
           spin
 
@@ -70,22 +75,20 @@ class CfScript::Executor::NonBlocking
 
               begin
                 data = stream.read_nonblock(READ_SIZE)
+                data_read
 
                 if fileno == stdout.fileno
-                  got ; out_stdout << data
+                  out_stdout << data
                 elsif fileno == stderr.fileno
-                  got ; out_stderr << data
+                  out_stderr << data
                 else
                   fileno_error(fileno, stdin, stdout, stderr)
                 end
               rescue EOFError => e
-              # puts "EOF-ERROR".colorize(with_color_of(:error))
-              # streams.delete(stream)
+                streams.delete(stream)
               end
             end
           end
-
-          break if stdout.eof? && stderr.eof?
         end
 
         out_status = wait.value
