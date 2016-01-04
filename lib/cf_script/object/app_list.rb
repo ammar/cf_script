@@ -13,6 +13,10 @@ class CfScript::AppList < CfScript::Object
       @list.reject! { |app_info| app_info.name !~ /\A#{options[:starting_with]}/ }
     end
 
+    if options[:contains]
+      @list.select! { |app_info| app_info.name =~ /#{options[:contains]}/ }
+    end
+
     if options[:state]
       @list.reject! { |app_info| app_info.requested_state !~ /\A#{options[:state]}\z/ }
     end

@@ -16,9 +16,15 @@ describe CfScript::AppList do
       urls:            'example.com',
     )
 
+    api_attrs = build_attribute_list(
+      requested_state: 'started',
+      urls:            'example.com',
+    )
+
     @list = CfScript::AppList.new([
       CfScript::AppInfo.new('one-worker', one_attrs),
       CfScript::AppInfo.new('two-engine', two_attrs),
+      CfScript::AppInfo.new('org-api-blue', api_attrs),
     ])
   end
 
@@ -33,6 +39,13 @@ describe CfScript::AppList do
 
     assert_equal 1, list.length
     assert_equal 'one-worker', list.first.name
+  end
+
+  it "selects by contains" do
+    list.select!(contains: 'api')
+
+    assert_equal 1, list.length
+    assert_equal 'org-api-blue', list.first.name
   end
 
   it "selects by suffix" do
