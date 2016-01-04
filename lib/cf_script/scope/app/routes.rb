@@ -3,7 +3,7 @@ module CfScript::Scope
     def has_route?(domain, host = nil)
       route = [host, domain].compact.join('.')
 
-      urls.split(', ').include?(route)
+      urls.include?(route)
     end
 
     def map_route(domain, host =  nil)

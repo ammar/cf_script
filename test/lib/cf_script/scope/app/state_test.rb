@@ -43,6 +43,21 @@ describe CfScript::Scope::App::State do
     end
   end
 
+  it "defines a restart method that calls Command.restart with the app name" do
+    app = create_app(:api)
+
+    arg_catcher = lambda do |command, *args, &block|
+      assert_equal :restart,  command
+      assert_equal [:api], args
+
+      return :called
+    end
+
+    CfScript::Command.stub :run, arg_catcher do
+      assert_equal :called, app.restart
+    end
+  end
+
   it "defines a push method that calls Command.push with the app name and options" do
     app = create_app(:api)
 
@@ -56,6 +71,21 @@ describe CfScript::Scope::App::State do
 
     CfScript::Command.stub :run, arg_catcher do
       assert_equal :called, app.push({ memory: '128MB' })
+    end
+  end
+
+  it "defines a restage method that calls Command.restage with the app name" do
+    app = create_app(:api)
+
+    arg_catcher = lambda do |command, *args, &block|
+      assert_equal :restage,  command
+      assert_equal [:api], args
+
+      return :called
+    end
+
+    CfScript::Command.stub :run, arg_catcher do
+      assert_equal :called, app.restage
     end
   end
 end
