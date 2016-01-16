@@ -36,6 +36,7 @@ describe CfScript::Scope::Target do
       assert_equal 'ACME',    subject.current_org
 
       subject.target(:production)
+
       assert_equal 'production', subject.current_space
       assert_equal 'ACME',       subject.current_org
     end
@@ -44,10 +45,12 @@ describe CfScript::Scope::Target do
   it "resets target to initial_target if the space has changed" do
     fake_cf target: :production do
       subject.target(:production)
+
       assert_equal 'production', subject.current_space
       assert_equal 'ACME',       subject.current_org
 
       subject.finalize
+
       assert_equal 'staging', subject.current_space
       assert_equal 'ACME',    subject.current_org
     end
@@ -56,10 +59,12 @@ describe CfScript::Scope::Target do
   it "resets target to initial_target if the org has changed" do
     fake_cf do
       subject.target(:staging_org)
+
       assert_equal 'staging', subject.current_space
       assert_equal 'ORG',     subject.current_org
 
       subject.finalize
+
       assert_equal 'staging', subject.current_space
       assert_equal 'ACME',    subject.current_org
     end

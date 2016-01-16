@@ -47,9 +47,19 @@ describe 'EnvCommand' do
     end
   end
 
+  it "returns an empty Hash if the output is empty" do
+    fake_cf env: :empty do
+      result = command.run(:worker)
+
+      assert_equal({}, result)
+    end
+  end
+
   it "returns an empty Hash when no env variables are found" do
     fake_cf env: :empty_vars do
-      assert_equal({}, command.run(:worker))
+      result = command.run(:worker)
+
+      assert_equal({}, result)
     end
   end
 end

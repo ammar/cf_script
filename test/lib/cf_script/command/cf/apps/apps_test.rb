@@ -8,7 +8,7 @@ describe 'AppsCommand' do
   it_behaves_like 'a command object that', {
     has_type:  :apps,
     has_name:  :apps,
-    fails_with: CfScript::AppList.new
+    fails_with: CfScript::AppList.new # an empty AppList
   }
 
   it "returns an AppList object" do
@@ -67,6 +67,15 @@ describe 'AppsCommand' do
         ['example.io', 'example.org'],
         []
       ], apps.map(&:urls)
+    end
+  end
+
+  it "returns an empty AppList for empty output" do
+    fake_cf apps: :empty do
+      apps = command.run
+
+      assert_instance_of CfScript::AppList, apps
+      assert_equal CfScript::AppList.new, apps
     end
   end
 
