@@ -17,7 +17,7 @@ module CfScript::Command
         'Showing health and status for app'
       )
 
-      if attributes
+      unless attributes.empty?
         app = CfScript::AppInfo.new(app_name, attributes)
 
         if rows = output.table(INSTANCE_STATUS_TABLE)

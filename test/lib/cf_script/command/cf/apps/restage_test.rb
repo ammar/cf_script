@@ -39,6 +39,14 @@ describe 'RestageCommand' do
     end
   end
 
+  it "returns nil if no attributes were found" do
+    fake_cf restage: :empty do
+      result = command.run(:api)
+
+      assert_equal nil, result
+    end
+  end
+
   it "returns nil on failure" do
     fake_cf restage: :not_found do
       assert_equal nil, command.run(:some_app)

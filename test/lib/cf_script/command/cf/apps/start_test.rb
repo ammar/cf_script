@@ -47,6 +47,14 @@ describe 'StartCommand' do
     end
   end
 
+  it "returns nil if no attributes were found" do
+    fake_cf start: :empty do
+      result = command.run(:worker)
+
+      assert_equal nil, result
+    end
+  end
+
   it "returns nil on failure" do
     fake_cf start: :not_found do
       assert_equal nil, command.run(:some_app)

@@ -19,6 +19,14 @@ describe 'PushCommand' do
     end
   end
 
+  it "returns nil if no attributes were found" do
+    fake_cf push: :empty do
+      result = command.run(:api)
+
+      assert_equal nil, result
+    end
+  end
+
   it "translates long option names to cf's short ones" do
     fake_cf do
       assert_equal({ f: 'a' }, command.translate_options({ manifest: 'a' }))

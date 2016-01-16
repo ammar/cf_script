@@ -33,6 +33,14 @@ describe 'AppCommand' do
     end
   end
 
+  it "returns nil if no attributes were found" do
+    fake_cf app: :empty do
+      result = command.run(:worker)
+
+      assert_equal nil, result
+    end
+  end
+
   it "returns nil when the app is not found" do
     fake_cf app: :not_found do
       assert_equal nil, command.run(:api)
