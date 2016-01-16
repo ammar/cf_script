@@ -17,7 +17,7 @@ module CfScript
     end
 
     def last_line
-      lines.last
+      lines.reject(&:empty?).last
     end
 
     def [](arg)
