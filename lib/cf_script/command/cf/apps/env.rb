@@ -6,7 +6,7 @@ module CfScript::Command
 
     def run(app_name, &block)
       run_cf self, app_name do |output|
-        return {} unless can_run?(output)
+        return {} unless good_run?(output)
 
         if vars = output.section_attributes('User-Provided')
           block_given? ? yield(vars.to_h) : vars.to_h

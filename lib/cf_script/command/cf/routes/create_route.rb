@@ -8,7 +8,7 @@ module CfScript::Command
       options = host ? { n: host } : {}
 
       run_cf self, space, domain, options do |output|
-        return false unless can_run?(output)
+        return false unless good_run?(output)
 
         if exists = output.contains?(/^OK$/)
           block_given? ? yield(exists) : exists

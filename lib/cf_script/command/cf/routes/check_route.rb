@@ -6,7 +6,7 @@ module CfScript::Command
 
     def run(host, domain, &block)
       run_cf self, host, domain do |output|
-        return false unless can_run?(output)
+        return false unless good_run?(output)
 
         exists = output.matches? /^Route #{host}.#{domain} does exist/
 

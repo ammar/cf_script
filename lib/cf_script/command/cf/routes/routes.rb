@@ -8,7 +8,7 @@ module CfScript::Command
 
     def run(*args, &block)
       run_cf self do |output|
-        return unless can_run?(output)
+        return unless good_run?(output)
 
         if rows = output.table(ROUTES_TABLE)
           routes = build_route_info(rows)

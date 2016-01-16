@@ -1,0 +1,8 @@
+---
+stdout: |
+  Renaming app old-name to new-name in org ACME / space development as user@example.com...
+  OK
+
+stderr: ''
+status:
+  exitstatus: 0

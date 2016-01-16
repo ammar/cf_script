@@ -27,7 +27,7 @@ class FixtureExecutor
 
   def fixture_for(command_line)
     case @command_fixtures[command_line.name]
-    when :fail, :no_endpoint, :no_login
+    when :fail, :no_endpoint, :no_login, :empty
       dir = File.join('commands', 'common')
       key = @command_fixtures[command_line.name]
     else

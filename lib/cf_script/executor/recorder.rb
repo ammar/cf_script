@@ -1,7 +1,9 @@
 class CfScript::Executor::Recorder
+  attr_reader :executions
+
   def initialize(executor = nil)
     @executions = []
-    @executor   = executor || CfScript::Executor::Simple.new
+    @executor   = executor || CfScript.config.runtime.executor
   end
 
   def execute(env, command_line)

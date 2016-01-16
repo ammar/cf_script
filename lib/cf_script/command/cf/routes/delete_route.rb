@@ -5,10 +5,13 @@ module CfScript::Command
     end
 
     def run(domain, host = nil, force = true, &block)
-      options = host ? { n: host, flags: [:f] } : { flags: [:f] }
+      options = {}
+
+      options[:n] = host if host
+      options[:flags] = [:f] if force
 
       run_cf self, domain, options do |output|
-        return false unless can_run?(output)
+        return false unless good_run?(output)
 
         if deleted = output.ok?
           block_given? ? yield(deleted) : deleted

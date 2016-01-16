@@ -24,16 +24,15 @@ describe 'LoginCommand' do
       space:  'staging'
     }
 
-    fake_cf do |stdout, stderr|
-      command.run('user', 'pass', options)
-
-      trace = stdout.lines.last
-      assert_match /cf login/, trace
-      assert_match /-u user -p \[PASSWORD HIDDEN\]/, trace
-      assert_match /-a https:\/\/api.example.io/, trace
-      assert_match /-o ACME/, trace
-      assert_match /-s staging/, trace
-    end
+    assert_command_args command,
+      ['user', 'pass', options],
+      [{
+        u: 'user',
+        p: 'pass',
+        a: 'https://api.example.io',
+        o: 'ACME',
+        s: 'staging'
+      }]
   end
 
   it "returns false when credentials get rejected" do

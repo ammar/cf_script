@@ -18,6 +18,18 @@ describe 'MapRouteCommand' do
     end
   end
 
+  it "host option defaults to nil" do
+    assert_command_args command,
+      [:worker, 'example.com'],
+      [:worker, 'example.com', {}]
+  end
+
+  it "adds option for host when given" do
+    assert_command_args command,
+      [:worker, 'example.com', 'www'],
+      [:worker, 'example.com', { n: 'www' }]
+  end
+
   it "prints an error and returns false when the route is invalid" do
     fake_cf map_route: :invalid do |stdout, stderr|
       assert_equal false, command.run(:api, 'example.com')

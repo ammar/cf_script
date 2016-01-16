@@ -6,7 +6,7 @@ module CfScript::Command
 
     def run(app_name, var_name, var_value, &block)
       run_cf self, app_name, var_name, var_value do |output|
-        return false unless can_run?(output)
+        return false unless good_run?(output)
 
         return true if output.contains?("\nOK\n")
 

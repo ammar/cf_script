@@ -8,7 +8,7 @@ module CfScript::Command
       options = host ? { n: host } : {}
 
       run_cf self, app_name, domain, options do |output|
-        return false unless can_run?(output,
+        return false unless good_run?(output,
           check_status: false,
           check_failed: false,
         )

@@ -8,7 +8,7 @@ module CfScript::Command
 
     def run(*args, &block)
       run_cf self, *args do |output|
-        return unless can_run?(output)
+        return unless good_run?(output)
 
         if rows = output.table(SPACES_TABLE)
           spaces = rows.map { |row| row[:name].value }

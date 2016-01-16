@@ -1,17 +1,30 @@
-require 'open3'
+require 'pty'
+require 'io/console'
 
 class CfScript::Executor::Simple
-  def initialize
-    @executions = 0
+  def execute(env, command_line)
+		out = ''
+
+		PTY.spawn(command_line.to_s)do |i, o, pid|
+			begin
+				i.sync
+        i.raw!
+
+				i.each_line do |line|
+          echo(line)
+					out << line
+				end
+			rescue Errno::EIO => e
+				# Ignored
+			ensure
+				::Process.wait pid
+			end
+		end
+
+    [out, '', $?]
   end
 
-  def execute(env, command_line)
-    @executions += 1
-
-    out, err, status = Open3.capture3(env, command_line.to_s)
-
-    puts if CfScript.config.runtime.trace
-
-    [out, err, status]
+  def echo(line)
+    STDOUT.print line if CfScript.config.runtime.echo_output
   end
 end

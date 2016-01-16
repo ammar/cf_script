@@ -10,7 +10,7 @@ module CfScript::Command::General
 
     def run(url = nil, &block)
       run_cf self, url do |output|
-        return unless can_run?(output)
+        return unless good_run?(output)
 
         if output.contains? API_NOT_SET
           error API_NOT_SET

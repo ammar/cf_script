@@ -71,27 +71,13 @@ module CfScript::Command
     def run_command(command, *args, &block)
       command_line = command.line(cf_env, cf_bin, args)
 
-      trace(:running, command_line.hide_sensitive, true)
+      trace(:running, command_line.hide_sensitive)
 
       stdout, stderr, status = cf_executor.execute(cf_env, command_line)
 
       output = CfScript::Output.new(command_line, stdout, stderr, status)
 
-      unless output.good?
-        run_error!(command_line, output)
-      end
-
       block_given? ? yield(output) : output
-    end
-
-    def run_error!(command_line, output)
-      unless CfScript.stdout.is_a?(StringIO)
-        CfScript.stdout.puts output.stdout unless output.stdout.empty?
-      end
-
-      unless CfScript.stderr.is_a?(StringIO)
-        CfScript.stderr.puts output.stderr unless output.stderr.empty?
-      end
     end
   end
 end

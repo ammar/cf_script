@@ -18,6 +18,18 @@ describe 'UnmapRouteCommand' do
     end
   end
 
+  it "host option defaults to nil" do
+    assert_command_args command,
+      [:worker, 'example.com'],
+      [:worker, 'example.com', {}]
+  end
+
+  it "adds option for host when given" do
+    assert_command_args command,
+      [:worker, 'example.com', 'www'],
+      [:worker, 'example.com', { n: 'www' }]
+  end
+
   it "prints an error and returns false when the app can not be found" do
     fake_cf unmap_route: :no_app do |stdout, stderr|
       assert_equal false, command.run(:api, 'example.com')

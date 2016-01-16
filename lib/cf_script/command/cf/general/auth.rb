@@ -6,7 +6,7 @@ module CfScript::Command::General
 
     def run(username, password, &block)
       run_cf self, username, password do |output|
-        unless can_run?(output, check_failed: false)
+        unless good_run?(output, check_failed: false)
           if output.credentials_rejected?
             error 'Credentials were rejected'
           else

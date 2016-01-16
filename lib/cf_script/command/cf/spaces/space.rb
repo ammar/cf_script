@@ -6,7 +6,7 @@ module CfScript::Command
 
     def run(space_name, &block)
       run_cf self, space_name do |output|
-        return unless can_run?(output)
+        return unless good_run?(output)
 
         if space = build_space(space_name, output)
           block_given? ? yield(space) : space

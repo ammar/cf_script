@@ -25,7 +25,7 @@ module CfScript::Command
       raise "run called in base command class"
     end
 
-    def can_run?(output, options = {})
+    def good_run?(output, options = {})
       options[:check_status] = options.key?(:check_status) ? options[:check_status] : true
       options[:check_failed] = options.key?(:check_failed) ? options[:check_failed] : true
 

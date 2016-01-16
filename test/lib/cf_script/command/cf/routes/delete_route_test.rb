@@ -16,4 +16,22 @@ describe 'DeleteRouteCommand' do
       assert_equal true, command.run('example.com', :api)
     end
   end
+
+  it "adds flag for force by default" do
+    assert_command_args command,
+      ['example.com'],
+      ['example.com', { flags: [:f] }]
+  end
+
+  it "skips flag for force when false" do
+    assert_command_args command,
+      ['example.com', 'www', false],
+      ['example.com', { n: 'www' }]
+  end
+
+  it "adds option for host and flag for force when both are given" do
+    assert_command_args command,
+      ['example.com', 'www', true],
+      ['example.com', { n: 'www', flags: [:f] }]
+  end
 end

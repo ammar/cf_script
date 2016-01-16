@@ -16,4 +16,16 @@ describe 'CreateRouteCommand' do
       assert_equal true, command.run(:staging, :api, 'example.com')
     end
   end
+
+  it "host option defaults to nil" do
+    assert_command_args command,
+      [:staging, 'example.com'],
+      [:staging, 'example.com', {}]
+  end
+
+  it "adds option for host when given" do
+    assert_command_args command,
+      [:staging, 'example.com', 'www'],
+      [:staging, 'example.com', { n: 'www' }]
+  end
 end

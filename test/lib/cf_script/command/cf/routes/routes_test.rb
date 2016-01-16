@@ -21,4 +21,12 @@ describe 'RoutesCommand' do
       end
     end
   end
+
+  it "returns nil if the routes table was not found" do
+    fake_cf routes: :empty do
+      routes = command.run
+
+      assert_equal nil, routes
+    end
+  end
 end

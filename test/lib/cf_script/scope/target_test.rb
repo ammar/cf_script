@@ -132,27 +132,37 @@ describe CfScript::Scope::Target do
     end
   end
 
-  it "responds to apps and calls Command.run" do
-    assert subject.respond_to?(:apps),
-      "Expected Scope::Target to respond to apps"
+  describe 'apps' do
+    it "calls Command.run" do
+      assert subject.respond_to?(:apps),
+        "Expected Scope::Target to respond to apps"
 
-    CfScript::Command.stub :run, :called do
-      assert_equal :called, subject.apps
-    end
-  end
-
-  it "calls apps.select! when options is not empty" do
-    apps = MiniTest::Mock.new
-    apps.expect(:org, nil, [])
-    apps.expect(:org, nil, [])
-    apps.expect(:space, nil, [])
-    apps.expect(:space, nil, [])
-    apps.expect(:select!, nil, [{ ending_with: :foo }])
-
-    CfScript::Command.stub :run, apps do
-      subject.apps(ending_with: :foo)
+      CfScript::Command.stub :run, :called do
+        assert_equal :called, subject.apps
+      end
     end
 
-    apps.verify
+    it "calls apps.select! when options are given" do
+      apps = MiniTest::Mock.new
+      apps.expect(:org, nil, [])
+      apps.expect(:org, nil, [])
+      apps.expect(:space, nil, [])
+      apps.expect(:space, nil, [])
+      apps.expect(:select!, nil, [{ ending_with: :foo }])
+
+      CfScript::Command.stub :run, apps do
+        subject.apps(ending_with: :foo)
+      end
+
+      apps.verify
+    end
+
+    it "executes given block within each app's scope" do
+      fake_cf do
+        subject.apps do
+          assert_instance_of CfScript::Scope::App, self
+        end
+      end
+    end
   end
 end

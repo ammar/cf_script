@@ -6,7 +6,7 @@ module CfScript::Command::General
 
     def run(*args, &block)
       run_cf self, *args do |output|
-        return false unless can_run?(output)
+        return false unless good_run?(output)
 
         block_given? ? yield(output.ok?) : output.ok?
       end

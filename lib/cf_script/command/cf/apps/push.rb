@@ -22,7 +22,7 @@ module CfScript::Command
 
     def run(app_name, options = {}, &block)
       run_cf self, app_name, translate_options(options.dup) do |output|
-        return unless can_run?(output, check_failed: false)
+        return unless good_run?(output, check_failed: false)
 
         if app = build_app_info(app_name, output)
           block_given? ? yield(app) : app

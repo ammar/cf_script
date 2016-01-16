@@ -11,7 +11,7 @@ module CfScript::Command
       space = args.first && args.first.key?(:s) ? args.first[:s] : ''
 
       run_cf self, *args do |output|
-        return nil unless can_run?(output, check_failed: false)
+        return nil unless good_run?(output, check_failed: false)
 
         # TODO: check org not found too
 

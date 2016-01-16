@@ -52,6 +52,12 @@ module CfScript::Scope
         @app_info = app_info if app_info
       end
     end
+
+    def enter_scope
+    end
+
+    def exit_scope
+    end
   end
 end
 

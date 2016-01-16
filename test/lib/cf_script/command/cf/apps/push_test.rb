@@ -43,4 +43,10 @@ describe 'PushCommand' do
       )
     end
   end
+
+  it "builds options and flag for run_cf" do
+    assert_command_args command,
+      [:worker, i: 2, memory: '123', command: './run', flags: [:no_start]],
+      [:worker, { i: 2, m: '123', c: './run', flags: [:no_start] }]
+  end
 end

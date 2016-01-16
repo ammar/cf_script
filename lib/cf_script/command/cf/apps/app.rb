@@ -6,7 +6,7 @@ module CfScript::Command
 
     def run(app_name, options = {}, &block)
       run_cf self, app_name do |output|
-        return nil unless can_run?(output)
+        return nil unless good_run?(output)
 
         if app_info = build_app_info(app_name, output)
           block_given? ? yield(app_info) : app_info

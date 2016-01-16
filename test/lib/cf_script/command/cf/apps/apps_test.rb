@@ -8,7 +8,7 @@ describe 'AppsCommand' do
   it_behaves_like 'a command object that', {
     has_type:  :apps,
     has_name:  :apps,
-    fails_with: []
+    fails_with: CfScript::AppList.new
   }
 
   it "returns an AppList object" do
@@ -74,8 +74,8 @@ describe 'AppsCommand' do
     fake_cf apps: :no_apps do
       apps = command.run
 
-      assert_instance_of Array, apps
-      assert_equal [], apps
+      assert_instance_of CfScript::AppList, apps
+      assert_equal CfScript::AppList.new, apps
     end
   end
 end

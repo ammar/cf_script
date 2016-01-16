@@ -1,0 +1,9 @@
+---
+stdout: |
+  Deleting app worker in org ACME / space development as user@example.com...
+  OK
+  App worker does not exist.
+
+stderr: ''
+status:
+  exitstatus: 0

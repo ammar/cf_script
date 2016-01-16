@@ -17,8 +17,10 @@ module CfScript::Command
 
     def run(options = {}, &block)
       run_cf self do |output|
-        return [] unless can_run?(output)
-        return [] if output.contains? NO_APPS_FOUND
+        blank_list = CfScript::AppList.new
+
+        return blank_list unless good_run?(output)
+        return blank_list if output.contains? NO_APPS_FOUND
 
         if rows = output.table(APPS_TABLE)
           list = build_app_list(rows)
@@ -26,7 +28,7 @@ module CfScript::Command
           block_given? ? yield(list) : list
         else
           error 'rows is nil'
-          return []
+          return blank_list
         end
       end
     end

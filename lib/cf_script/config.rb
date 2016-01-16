@@ -45,12 +45,14 @@ class CfScript::Config
     attr_accessor :color
 
     attr_accessor :executor
+    attr_accessor :echo_output
 
     def initialize
       @trace = ENV['TRACE'] || false
       @color = true
 
-      @executor = ENV['NON_BLOCKING_EXECUTOR'] ? CfScript::Executor::NonBlocking.new : default_executor
+      @executor = default_executor
+      @echo_output  = true
     end
 
     def default_executor

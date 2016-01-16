@@ -52,7 +52,13 @@ module CfScript::Scope
 
       apps.select!(options) unless options.empty?
 
-      block_given? ? yield(apps) : apps
+      if block_given?
+        apps.each do |app_info|
+          app(app_info, &block)
+        end
+      else
+        apps
+      end
     end
 
     private
