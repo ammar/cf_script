@@ -1,4 +1,4 @@
-class CfScript::RouteInfo < CfScript::Object
+class CfScript::RouteInfo
   attr_reader :space
   attr_reader :host
   attr_reader :domain

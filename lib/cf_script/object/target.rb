@@ -1,4 +1,4 @@
-class CfScript::Target < CfScript::Object
+class CfScript::Target
   attr_reader   :api_endpoint
   attr_reader   :user
   attr_reader   :org

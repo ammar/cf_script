@@ -1,4 +1,4 @@
-class CfScript::Attribute < CfScript::Object
+class CfScript::Attribute
   attr_reader :name, :value
 
   def initialize(name, value)

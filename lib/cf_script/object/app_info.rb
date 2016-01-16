@@ -1,4 +1,4 @@
-class CfScript::AppInfo < CfScript::Object
+class CfScript::AppInfo
   # These are always available
   attr_reader :name
   attr_reader :requested_state

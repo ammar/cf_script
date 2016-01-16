@@ -1,4 +1,4 @@
-class CfScript::AppList < CfScript::Object
+class CfScript::AppList
   extend Forwardable
   include Enumerable
 

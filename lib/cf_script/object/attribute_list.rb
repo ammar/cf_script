@@ -1,4 +1,4 @@
-class CfScript::AttributeList < CfScript::Object
+class CfScript::AttributeList
   extend Forwardable
   include Enumerable
 

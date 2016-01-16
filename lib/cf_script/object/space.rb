@@ -1,4 +1,4 @@
-class CfScript::Space < CfScript::Object
+class CfScript::Space
   attr_reader :name
   attr_reader :org
   attr_reader :apps

@@ -1,4 +1,4 @@
-class CfScript::ApiEndpoint < CfScript::Object
+class CfScript::ApiEndpoint
   attr_reader :url
   attr_reader :version
 

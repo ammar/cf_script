@@ -1,4 +1,4 @@
-class CfScript::InstanceStatus < CfScript::Object
+class CfScript::InstanceStatus
   attr_reader :index
   attr_reader :state
   attr_reader :since
