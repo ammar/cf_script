@@ -24,7 +24,12 @@ module CfScript::Command
       run_cf self, app_name, translate_options(options.dup) do |output|
         return unless good_run?(output, check_failed: false)
 
-        if app = build_app_info(app_name, output)
+        no_start = options.key?(:flags) &&
+                   options[:flags].include?(:no_start)
+
+        if no_start && output.ok?
+          return true
+        elsif app = build_app_info(app_name, output)
           block_given? ? yield(app) : app
         else
           error "app is nil"

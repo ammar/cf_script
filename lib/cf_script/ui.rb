@@ -72,10 +72,6 @@ module CfScript::UI
     COLORS[CfScript.config.ui.color ? type : :default]
   end
 
-  def ui_style(text, type = :default)
-    text.colorize with_color_of(type)
-  end
-
   def emoji(type)
     "#{(EMOJI.key?(type) ? EMOJI[type] : EMOJI[:default])} "
   end
@@ -105,7 +101,7 @@ module CfScript::UI
   end
 
   def tag_format(tag, type = :default)
-    if tag and CfScript.config.ui.tags
+    if tag && CfScript.config.ui.tags
       list = []
 
       list << tag_open(type)

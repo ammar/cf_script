@@ -5,13 +5,25 @@ module MockExecution
     ENV['CF_BINARY'] = 'cf'
   end
 
-  def test_config(config = {})
-    CfScript.config.io.stdout     = config[:stderr] || StringIO.new
-    CfScript.config.io.stderr     = config[:stderr] || StringIO.new
+  def test_config(options = {})
+    CfScript.config.io.stdout = options[:stderr] || StringIO.new
+    CfScript.config.io.stderr = options[:stderr] || StringIO.new
 
-    CfScript.config.ui.color      = config[:color]  || false
+    CfScript.config.ui.tags  = options.key?(:tags)  ? options[:tags]  : true
+    CfScript.config.ui.color = options.key?(:color) ? options[:color] : false
+    CfScript.config.ui.emoji = options.key?(:emoji) ? options[:emoji] : false
 
-    CfScript.config.runtime.trace = config[:trace]  || true
+    CfScript.config.runtime.trace = options.key?(:trace) ? options[:trace] : true
+  end
+
+  def with_config(config_options = {}, &block)
+    config_context = ConfigContext.new
+
+    test_config(config_options)
+
+    yield
+  ensure
+    config_context.reset
   end
 
   def test_executor(executor)
@@ -44,8 +56,18 @@ module MockExecution
     end
   end
 
+  def fake_io(config_options = {}, &block)
+    config_context = ConfigContext.new
+
+    test_config(config_options)
+
+    yield(CfScript.stdout.string, CfScript.stderr.string)
+  ensure
+    config_context.reset
+  end
+
   def fake_cf(command_fixtures = {}, &block)
-    config = ConfigContext.new
+    config_context = ConfigContext.new
 
     test_env
     test_config
@@ -53,6 +75,6 @@ module MockExecution
 
     yield(CfScript.stdout.string, CfScript.stderr.string)
   ensure
-    config.reset
+    config_context.reset
   end
 end

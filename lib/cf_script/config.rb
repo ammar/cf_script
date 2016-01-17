@@ -52,7 +52,7 @@ class CfScript::Config
       @color = true
 
       @executor = default_executor
-      @echo_output  = true
+      @echo_output = true
     end
 
     def default_executor
