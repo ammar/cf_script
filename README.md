@@ -43,11 +43,11 @@ TRACE=1 ruby example.rb
 
 Install the gem with:
 
-```gem install cf_script --pre```
+```gem install cf_script```
 
 Or, add it to your project's `Gemfile`:
 
-```gem 'cf_script', '0.0.1.beta.1'```
+```gem 'cf_script'```
 
 ---
 ## Execution Scopes
