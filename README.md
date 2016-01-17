@@ -1,6 +1,8 @@
-# CfScript [![Gem Version](https://img.shields.io/gem/v/cf_script.svg)](https://rubygems.org/gems/cf_script) [![Build Status](https://secure.travis-ci.org/ammar/cf_script.png?branch=master)](http://travis-ci.org/ammar/cf_script)
+# CfScript
+[![Gem Version](https://img.shields.io/gem/v/cf_script.svg)](https://rubygems.org/gems/cf_script) [![Build Status](https://secure.travis-ci.org/ammar/cf_script.png?branch=master)](http://travis-ci.org/ammar/cf_script)
 
-CfScript is a DSL for scripting and automating the Cloud Foundry CLI, with a focus on application deployment and management. [See Supported Commands](#supported-commands)
+CfScript is a DSL for scripting the Cloud Foundry CLI, with a focus
+on application deployment and management. _[See Supported Commands](#supported-commands)_
 
 ```ruby
 # example.rb
@@ -116,6 +118,50 @@ cf do
 end
 ```
 
+The `app` method accepts a string or an AppInfo object as a name argument.
+
+## Command Methods
+
+### The `apps` Method
+The `apps` method mirrors the `cf apps` command. When called without a block,
+it returns an AppList object that acts as an array of AppInfo objects, each
+of which contains the information in each row output by `cf apps`.
+
+```ruby
+cf do
+  # Get the list of AppInfo objects
+  space_apps = apps
+
+  # Iterate over the AppInfo objects
+  apps.each do |app_info|
+    # ...
+  end
+end
+```
+
+When the `apps` method is called with a block, it excutes the block within the
+context of each app.
+
+```ruby
+cf do
+  apps do
+    started? ? restart : start
+  end
+end
+```
+
+This is equivalent to:
+
+```ruby
+cf do
+  apps.each do |app_info|
+    app app_info do
+      started? ? restart : start
+    end
+  end
+end
+```
+
 ---
 ## Supported Commands
 
@@ -135,6 +181,8 @@ end
 | &emsp;&nbsp;restart                   | `cf restart APP_NAME`                                   | &#x2713; |
 | &emsp;&nbsp;push                      | `cf push APP_NAME [OPTIONS]`                            | &#x2713; |
 | &emsp;&nbsp;restage                   | `cf restage APP_NAME`                                   | &#x2713; |
+| &emsp;&nbsp;rename                    | `cf rename APP_NAME NEW_APP_NAME`                       | &#x2713; |
+| &emsp;&nbsp;delete                    | `cf delete APP_NAME [-f -r]`                            | &#x2713; |
 | &emsp;&nbsp;env                       | `cf env APP_NAME`                                       | &#x2713; |
 | &emsp;&nbsp;set-env                   | `cf set-env APP_NAME VAR_NAME VAR_VALUE`                | &#x2713; |
 | &emsp;&nbsp;unset-env                 | `cf unset-env APP_NAME VAR_NAME`                        | &#x2713; |
@@ -167,15 +215,18 @@ rake install
 ## Known Problems/Limitations
 
 * Obviously everything depends on the output of `cf`, so if that changes
-  things will break. An attempt to minimize this was made but there is no
-  guarantee.
+  things will break. This is not unique to cf_script, but it is something
+  worth noting. The centralized parsing of `cf`'s output should reduce
+  the impact of change on scripts, but there is no guarantee.
 
-* The fixtures were collected manually and they are a pain to manage. Will
-  investigate creating a script that automates their collection.
+* The fixtures were collected manually and they might become a pain to
+  manage. Will investigate creating a tool/script that automates their
+  collection from `cf`.
 
-* I18N, n'existe pas, mais it's not impossible. If implemented, it should
+* I18N, n'existe pas, mais, it's not impossible. If implemented, it should
   be based on the latest [translation files from the `cf` repository](https://github.com/cloudfoundry/cli/tree/master/cf/i18n/resources),
-  and the process of pulling the files automated. Might explicity add LANG to
-  the ENV variables passed to `cf` in the meantime.
+  and the process of pulling the files automated. In the meantime, might
+  explicity add LANG to the ENV variables passed to `cf`.
 
 * Windows? No clues. Probably not without some changes.
+
