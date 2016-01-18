@@ -120,12 +120,12 @@ end
 
 The `app` method accepts a string or an AppInfo object as a name argument.
 
-## Command Methods
 
 ### The `apps` Method
 The `apps` method mirrors the `cf apps` command. When called without a block,
-it returns an AppList object that acts as an array of AppInfo objects, each
-of which contains the information in each row output by `cf apps`.
+it returns an [AppList](https://github.com/ammar/cf_script/blob/master/lib/cf_script/object/app_list.rb)
+object that acts as an array of [AppInfo](https://github.com/ammar/cf_script/blob/master/lib/cf_script/object/app_info.rb)
+objects, each of which contains the information in each row output by `cf apps`.
 
 ```ruby
 cf do
