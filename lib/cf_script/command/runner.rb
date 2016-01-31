@@ -39,13 +39,13 @@ module CfScript::Command
         if @cf_path.nil? || @cf_path.empty?
           puts "Could not find the cf binary".colorize(:red)
           puts
-          puts "If it isn't installed you need to install it first. You can find"
-          puts "the latest release at:"
+          puts "If it isn't installed you need to install it first. You can "
+          puts "find the latest release at:"
           puts
           puts "  https://github.com/cloudfoundry/cli/releases".colorize(:cyan)
           puts
-          puts "If cf is already installed, make sure its location is included "
-          puts "in $PATH."
+          puts "If cf is already installed, make sure its location is "
+          puts "included in $PATH."
 
           raise "Could not find the cf binary"
         end

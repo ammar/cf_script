@@ -25,13 +25,17 @@ module CfScript::Command
       raise "run called in base command class"
     end
 
+    def option_value(options, key, default)
+      options.key?(key) ? options[key] : default
+    end
+
     def good_run?(output, options = {})
-      options[:check_status] = options.key?(:check_status) ? options[:check_status] : true
-      options[:check_failed] = options.key?(:check_failed) ? options[:check_failed] : true
+      options[:check_status] = option_value(options, :check_status, true)
+      options[:check_failed] = option_value(options, :check_failed, true)
 
       if options[:check_status] == true && !output.good?
         error 'cf exited with error'
-        output.dump
+        output.dump unless CfScript.config.runtime.echo_output
         return false
       end
 
@@ -47,7 +51,7 @@ module CfScript::Command
 
       if options[:check_failed] == true && output.failed?
         error 'FAILED'
-        output.dump
+        output.dump unless CfScript.config.runtime.echo_output
         return false
       end
 

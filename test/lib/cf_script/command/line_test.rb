@@ -4,7 +4,9 @@ describe CfScript::Command::Line do
   subject { CfScript::Command::Line }
 
   it "initializes bin, name, args, options, and flags" do
-    line = subject.new({ foo: :bar}, 'bin', :test, :dummy, [:arg1, :arg2, { i: 1, o: 2, flags: [:s] }])
+    line = subject.new({ foo: :bar }, 'bin', :test, :dummy,
+      [:arg1, :arg2, { i: 1, o: 2, flags: [:s] }]
+    )
 
     assert_equal 'bin',          line.bin
     assert_equal :dummy,         line.name
@@ -15,19 +17,25 @@ describe CfScript::Command::Line do
 
   describe "line" do
     it "returns a formatted command line" do
-      line = subject.new({}, 'cf', :test, :dummy, [:arg1, :arg2, { i: 1, o: 2, flags: [:s] }])
+      line = subject.new({}, 'cf', :test, :dummy,
+        [:arg1, :arg2, { i: 1, o: 2, flags: [:s] }]
+      )
 
       assert_equal 'cf dummy arg1 arg2 -i 1 -o 2 -s', line.line
     end
 
     it "formats long flag names" do
-      line = subject.new({}, 'cf', :test, :dummy, [:arg1, { i: 1, flags: [:some_thing] }])
+      line = subject.new({}, 'cf', :test, :dummy,
+        [:arg1, { i: 1, flags: [:some_thing] }]
+      )
 
       assert_equal 'cf dummy arg1 -i 1 --some-thing', line.line
     end
 
     it "pass preformatted flags as is" do
-      line = subject.new({}, 'cf', :test, :dummy, [:arg1, { i: 1, flags: ['--one', '--foo-bar'] }])
+      line = subject.new({}, 'cf', :test, :dummy,
+        [:arg1, { i: 1, flags: ['--one', '--foo-bar'] }]
+      )
 
       assert_equal 'cf dummy arg1 -i 1 --one --foo-bar', line.line
     end

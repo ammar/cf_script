@@ -10,7 +10,7 @@ module CfScript::Command
     end
 
     def catalog
-      catalog = Hash.new{ |types, type| types[type] = [] }
+      catalog = Hash.new { |types, type| types[type] = [] }
 
       commands.each do |name, command|
         catalog[command.type] << name

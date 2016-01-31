@@ -21,7 +21,7 @@ module CfScript
     end
 
     def no_api_endpoint?
-      contains? 'No API endpoint set.'
+      contains? 'No API endpoint set'
     end
 
     def not_logged_in?
