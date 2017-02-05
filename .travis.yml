@@ -5,7 +5,7 @@ branches:
     - master
 
 before_script:
-  - curl -o /tmp/cf-linux-64.tgz https://cli.run.pivotal.io/stable\?release\=linux64-binary\&version\=6.23.1\&source\=github-rel
+  - curl -o /tmp/cf-linux-64.tgz https://s3-us-west-1.amazonaws.com/cf-cli-releases/releases/v6.23.1/cf-cli_6.23.1_linux_x86-64.tgz
   - tar -xvf /tmp/cf-linux-64.tgz
   - export PATH=$PATH:$PWD/
 
