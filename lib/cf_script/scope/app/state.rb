@@ -29,5 +29,11 @@ module CfScript::Scope
         @app_info = app_info if app_info
       end
     end
+
+    def restart_instance(index)
+      CfScript::Command.restart_app_instance name, index do |app_info|
+        @app_info = app_info if app_info
+      end
+    end
   end
 end

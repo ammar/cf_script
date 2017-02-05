@@ -88,4 +88,21 @@ describe CfScript::Scope::App::State do
       assert_equal :called, app.restage
     end
   end
+
+  it "defines a restart_instance method that calls Command.restart_app_instance with the app name and an instance index" do
+    app = create_app(:api)
+
+    arg_catcher = lambda do |command, *args, &block|
+      assert_equal :restart_app_instance,  command
+      assert_equal [:api, 0], args
+
+      return :called
+    end
+
+    app.stub :cf_self, true do
+      CfScript::Command.stub :run, arg_catcher do
+        assert_equal :called, app.restart_instance(0)
+      end
+    end
+  end
 end

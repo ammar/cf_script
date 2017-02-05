@@ -42,6 +42,7 @@ require 'cf_script/command/cf/apps/set_env'
 require 'cf_script/command/cf/apps/unset_env'
 require 'cf_script/command/cf/apps/rename'
 require 'cf_script/command/cf/apps/delete'
+require 'cf_script/command/cf/apps/restart_app_instance'
 
 module CfScript::Command::Apps
   CfScript::Command.register AppsCommand
@@ -56,4 +57,5 @@ module CfScript::Command::Apps
   CfScript::Command.register UnsetEnvCommand
   CfScript::Command.register RenameCommand
   CfScript::Command.register DeleteCommand
+  CfScript::Command.register RestartAppInstanceCommand
 end

@@ -1,0 +1,8 @@
+---
+stdout: |
+  Restarting instance 0 of application development-worker as user@example.com
+  OK
+
+stderr: ''
+status:
+  exitstatus: 0

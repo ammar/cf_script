@@ -35,8 +35,8 @@ TRACE=1 ruby example.rb
 ---
 ## Requirements
 
-* `ruby` >= 2.0
-* `cf` >= 16.0
+* `ruby` >= 2.2
+* `cf` >= 6.0
 
 ---
 ## Install
@@ -186,6 +186,7 @@ end
 | &emsp;&nbsp;env                       | `cf env APP_NAME`                                       | &#x2713; |
 | &emsp;&nbsp;set-env                   | `cf set-env APP_NAME VAR_NAME VAR_VALUE`                | &#x2713; |
 | &emsp;&nbsp;unset-env                 | `cf unset-env APP_NAME VAR_NAME`                        | &#x2713; |
+| &emsp;&nbsp;restart-app-instance      | `cf restart-app-instance APP_NAME INDEX`                | &#x2713; |
 | _**Routes**_                          |                                                         |          |
 | &emsp;&nbsp;routes                    | `cf routes`                                             | &#x2713; |
 | &emsp;&nbsp;check-route               | `cf check-route HOST DOMAIN`                            | &#x2713; |
