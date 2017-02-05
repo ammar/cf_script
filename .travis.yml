@@ -5,7 +5,7 @@ branches:
     - master
 
 before_script:
-  - wget https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.23.1&source=github-rel -O /tmp/cf-linux-64.tgz
+  - curl -o /tmp/cf-linux-64.tgz https://cli.run.pivotal.io/stable\?release\=linux64-binary\&version\=6.23.1\&source\=github-rel
   - tar -xvf /tmp/cf-linux-64.tgz
   - export PATH=$PATH:$PWD/
 
