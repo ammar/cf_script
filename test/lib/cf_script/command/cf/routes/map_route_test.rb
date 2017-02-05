@@ -34,9 +34,9 @@ describe 'MapRouteCommand' do
     fake_cf map_route: :invalid do |stdout, stderr|
       assert_equal false, command.run(:api, 'example.com')
 
-      assert_match /\{map_route\}/, stderr.lines.last
-      assert_match /Server error/, stderr.lines.last
-      assert_match /route is invalid/, stderr.lines.last
+      assert_match(/\{map_route\}/, stderr.lines.last)
+      assert_match(/Server error/, stderr.lines.last)
+      assert_match(/route is invalid/, stderr.lines.last)
     end
   end
 
@@ -60,9 +60,9 @@ describe 'MapRouteCommand' do
     fake_cf map_route: :host_taken do |stdout, stderr|
       assert_equal false, command.run(:api, 'example.com')
 
-      assert_match /\{map_route\}/, stderr.lines.last
-      assert_match /Server error/, stderr.lines.last
-      assert_match /The host is taken: api/, stderr.lines.last
+      assert_match(/\{map_route\}/, stderr.lines.last)
+      assert_match(/Server error/, stderr.lines.last)
+      assert_match(/The host is taken: api/, stderr.lines.last)
     end
   end
 end

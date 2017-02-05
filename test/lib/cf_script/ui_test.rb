@@ -84,7 +84,7 @@ describe CfScript::UI do
       with_config do
         emoji = subject.emoji_for(:success)
 
-        assert_equal nil, emoji
+        assert_nil emoji
       end
     end
 
@@ -102,7 +102,7 @@ describe CfScript::UI do
       with_config tags: false do
         tag = subject.tag_format('foo', :trace)
 
-        assert_equal nil, tag
+        assert_nil tag
       end
     end
 
@@ -110,7 +110,7 @@ describe CfScript::UI do
       with_config tags: true do
         tag = subject.tag_format(nil, :trace)
 
-        assert_equal nil, tag
+        assert_nil tag
       end
     end
 

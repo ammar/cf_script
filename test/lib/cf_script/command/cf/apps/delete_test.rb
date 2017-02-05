@@ -21,7 +21,7 @@ describe 'DeleteCommand' do
     fake_cf delete: :not_exist do |stdout, stderr|
       command.run(:name)
 
-      assert_match /\{delete\} failed to delete app/, stderr.lines.first
+      assert_match(/\{delete\} failed to delete app/, stderr.lines.first)
     end
   end
 

@@ -37,13 +37,13 @@ describe 'AppCommand' do
     fake_cf app: :empty do
       result = command.run(:worker)
 
-      assert_equal nil, result
+      assert_nil result
     end
   end
 
   it "returns nil when the app is not found" do
     fake_cf app: :not_found do
-      assert_equal nil, command.run(:api)
+      assert_nil command.run(:api)
     end
   end
 

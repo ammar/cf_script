@@ -58,10 +58,10 @@ describe CfScript::Command::Line do
       line = subject.new({}, 'cf', :test, :login, [test])
       text = line.hide_sensitive
 
-      assert_match /cf login /, text
-      assert_match /-p \[PASSWORD HIDDEN\]/, text
-      assert_match /-u name/, text
-      assert_match /-a work/, text
+      assert_match(/cf login /, text)
+      assert_match(/-p \[PASSWORD HIDDEN\]/, text)
+      assert_match(/-u name/, text)
+      assert_match(/-a work/, text)
     end
   end
 end

@@ -42,15 +42,15 @@ describe CfScript::AppInfo do
     info = CfScript::AppInfo.new('name', empty_attrs)
 
     assert_equal 'name',  info.name
-    assert_equal nil,     info.requested_state
-    assert_equal nil,     info.instances
+    assert_nil            info.requested_state
+    assert_nil            info.instances
     assert_equal [],      info.urls
-    assert_equal nil,     info.usage
-    assert_equal nil,     info.last_uploaded
-    assert_equal nil,     info.stack
-    assert_equal nil,     info.buildpack
-    assert_equal nil,     info.memory
-    assert_equal nil,     info.disk
+    assert_nil            info.usage
+    assert_nil            info.last_uploaded
+    assert_nil            info.stack
+    assert_nil            info.buildpack
+    assert_nil            info.memory
+    assert_nil            info.disk
   end
 
   it "sets apps command attributes when given" do
@@ -62,10 +62,10 @@ describe CfScript::AppInfo do
     assert_equal 2,                       info.urls.length
     assert_equal 'projects.example.com',  info.urls.first
     assert_equal 'projects.example.io',   info.urls.last
-    assert_equal nil,                     info.usage
-    assert_equal nil,                     info.last_uploaded
-    assert_equal nil,                     info.stack
-    assert_equal nil,                     info.buildpack
+    assert_nil                            info.usage
+    assert_nil                            info.last_uploaded
+    assert_nil                            info.stack
+    assert_nil                            info.buildpack
     assert_equal '1G',                    info.memory
     assert_equal '2G',                    info.disk
   end
@@ -84,7 +84,7 @@ describe CfScript::AppInfo do
     assert_equal 'cflinuxfs2',            info.stack
     assert_equal buildpack,               info.buildpack
     assert_equal '1G',                    info.memory # Extracted from usage
-    assert_equal nil,                     info.disk
+    assert_nil                            info.disk
   end
 
   it "defines state method that return value of requested_state" do

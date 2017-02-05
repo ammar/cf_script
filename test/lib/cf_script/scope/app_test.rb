@@ -36,7 +36,7 @@ describe CfScript::Scope::App do
   it "raises if initialized with anything other than a name or AppInfo" do
     assert_raises(RuntimeError) {
       fake_cf do
-        app = CfScript::Scope::App.new([], target)
+        CfScript::Scope::App.new([], target)
       end
     }
   end

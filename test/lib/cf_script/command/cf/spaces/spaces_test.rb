@@ -24,7 +24,7 @@ describe 'SpacesCommand' do
     fake_cf spaces: :empty do
       spaces = command.run
 
-      assert_equal nil, spaces
+      assert_nil spaces
     end
   end
 

@@ -14,7 +14,11 @@ shared_examples_for 'a command object that' do |attrs|
     fake_cf attrs[:has_name] => :fail do
       args = fake_command_args(command)
 
-      assert_equal attrs[:fails_with], command.run(*args)
+      if attrs[:fails_with].nil?
+        assert_nil command.run(*args)
+      else
+        assert_equal attrs[:fails_with], command.run(*args)
+      end
     end
   end
 
@@ -22,7 +26,12 @@ shared_examples_for 'a command object that' do |attrs|
     fake_cf attrs[:has_name] => :no_endpoint do |stdout, stderr|
       args = fake_command_args(command)
 
-      assert_equal attrs[:fails_with], command.run(*args)
+      if attrs[:fails_with].nil?
+        assert_nil command.run(*args)
+      else
+        assert_equal attrs[:fails_with], command.run(*args)
+      end
+
       assert_includes stderr.lines, "{#{attrs[:has_name]}} No API endpoint set\n"
     end
   end
@@ -31,7 +40,12 @@ shared_examples_for 'a command object that' do |attrs|
     fake_cf attrs[:has_name] => :no_login do |stdout, stderr|
       args = fake_command_args(command)
 
-      assert_equal attrs[:fails_with], command.run(*args)
+      if attrs[:fails_with].nil?
+        assert_nil command.run(*args)
+      else
+        assert_equal attrs[:fails_with], command.run(*args)
+      end
+
       assert_includes stderr.lines, "{#{attrs[:has_name]}} Not logged in\n"
     end
   end

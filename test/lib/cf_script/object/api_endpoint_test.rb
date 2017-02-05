@@ -6,8 +6,8 @@ describe CfScript::ApiEndpoint do
   it "initializes all attributes to sensible defaults" do
     api_endpoint = subject.new
 
-    assert_equal nil, api_endpoint.url
-    assert_equal nil, api_endpoint.version
+    assert_nil api_endpoint.url
+    assert_nil api_endpoint.version
   end
 
   it "sets all given attributes" do

@@ -53,7 +53,7 @@ describe CfScript::Output::Buffer do
 
   it "responds to match and returns MatchData object" do
     assert_instance_of MatchData, buffer.match(/2/)
-    assert_equal nil, buffer.match(/4/)
+    assert_nil buffer.match(/4/)
   end
 
   it "responds to matches? and returns true or false" do

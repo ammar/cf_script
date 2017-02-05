@@ -8,7 +8,7 @@ module CfScript::Command
       run_cf self, host, domain do |output|
         return false unless good_run?(output)
 
-        exists = output.matches? /^Route #{host}.#{domain} does exist/
+        exists = output.matches?(/^Route #{host}.#{domain} does exist/)
 
         block_given? ? yield(exists) : exists
       end

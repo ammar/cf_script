@@ -26,7 +26,7 @@ describe 'RoutesCommand' do
     fake_cf routes: :empty do
       routes = command.run
 
-      assert_equal nil, routes
+      assert_nil routes
     end
   end
 end

@@ -8,7 +8,7 @@ describe CfScript::Space do
 
     assert_equal 'outer-space', space.name
 
-    assert_equal nil, space.org
+    assert_nil space.org
 
     assert_equal [], space.apps
     assert_equal [], space.domains

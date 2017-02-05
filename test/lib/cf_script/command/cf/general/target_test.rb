@@ -13,7 +13,7 @@ describe 'TargetCommand' do
 
   it "returns nil and prints an error on parsing failure" do
     fake_cf target: :empty do |stdout, stderr|
-      assert_equal nil, command.run
+      assert_nil command.run
 
       assert_includes stderr.lines, "{target} object is nil\n"
     end
@@ -75,7 +75,7 @@ describe 'TargetCommand' do
 
     it "returns nil and prints an error when the space is not found" do
       fake_cf do |stdout, stderr|
-        assert_equal nil, command.run(:not_found)
+        assert_nil command.run(:not_found)
 
         assert_includes stderr.lines, "{target} Space not_found not found\n"
       end

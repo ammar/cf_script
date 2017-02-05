@@ -24,7 +24,7 @@ describe 'ApiCommand' do
 
     it "returns nil when the api endpoint is not set" do
       fake_cf api: :not_set do |stdout, stderr|
-        assert_equal nil, command.run
+        assert_nil command.run
       end
     end
   end
@@ -42,13 +42,13 @@ describe 'ApiCommand' do
 
     it "returns nil when the argument is invalid" do
       fake_cf api: :bad_argument do |stdout, stderr|
-        assert_equal nil, command.run('')
+        assert_nil command.run('')
       end
     end
 
     it "returns nil when the endpoint is invalid" do
       fake_cf api: :bad_endpoint do |stdout, stderr|
-        assert_equal nil, command.run('https://api.example.com')
+        assert_nil command.run('https://api.example.com')
       end
     end
   end

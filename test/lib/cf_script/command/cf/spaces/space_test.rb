@@ -34,7 +34,7 @@ describe 'SpaceCommand' do
     fake_cf space: :empty do
       space = command.run(:space)
 
-      assert_equal nil, space
+      assert_nil space
     end
   end
 

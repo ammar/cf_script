@@ -12,13 +12,13 @@ describe CfScript::InstanceStatus do
   it "initializes all attributes to sensible defaults" do
     status = CfScript::InstanceStatus.new
 
-    assert_equal nil, status.index
-    assert_equal nil, status.state
-    assert_equal nil, status.since
-    assert_equal nil, status.cpu
-    assert_equal nil, status.memory
-    assert_equal nil, status.disk
-    assert_equal nil, status.details
+    assert_nil status.index
+    assert_nil status.state
+    assert_nil status.since
+    assert_nil status.cpu
+    assert_nil status.memory
+    assert_nil status.disk
+    assert_nil status.details
   end
 
   it "initializes given attributes" do

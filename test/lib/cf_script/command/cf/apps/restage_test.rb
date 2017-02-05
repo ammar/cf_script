@@ -43,13 +43,13 @@ describe 'RestageCommand' do
     fake_cf restage: :empty do
       result = command.run(:api)
 
-      assert_equal nil, result
+      assert_nil result
     end
   end
 
   it "returns nil on failure" do
     fake_cf restage: :not_found do
-      assert_equal nil, command.run(:some_app)
+      assert_nil command.run(:some_app)
     end
   end
 end

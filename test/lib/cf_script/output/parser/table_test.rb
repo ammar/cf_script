@@ -102,7 +102,7 @@ describe CfScript::Output::Parser::Table do
     it "returns nil of nothing matched" do
       rows = parser.parse_table(text_buffer, ['foo'])
 
-      assert_equal nil, rows
+      assert_nil rows
     end
   end
 end

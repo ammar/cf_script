@@ -33,6 +33,8 @@ module CfScript::Command
     end
 
     def cf_path
+      @cf_path = nil unless defined? @cf_path
+
       unless @cf_path
         @cf_path = ENV['CF_BINARY'] || which_cf
 

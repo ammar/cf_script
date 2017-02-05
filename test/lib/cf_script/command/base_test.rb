@@ -63,8 +63,8 @@ describe CfScript::Command::Base do
         fake_io do |stdout, stderr|
           subject.good_run?(@output)
 
-          assert_match /\{dummy\}/, stderr.lines.last
-          assert_match /cf exited with error/, stderr.lines.last
+          assert_match(/\{dummy\}/, stderr.lines.last)
+          assert_match(/cf exited with error/, stderr.lines.last)
         end
       end
 
@@ -118,8 +118,8 @@ describe CfScript::Command::Base do
         fake_io do |stdout, stderr|
           subject.good_run?(@output)
 
-          assert_match /\{dummy\}/, stderr.lines.last
-          assert_match /No API endpoint set/, stderr.lines.last
+          assert_match(/\{dummy\}/, stderr.lines.last)
+          assert_match(/No API endpoint set/, stderr.lines.last)
         end
       end
     end
@@ -137,8 +137,8 @@ describe CfScript::Command::Base do
         fake_io do |stdout, stderr|
           subject.good_run?(@output)
 
-          assert_match /\{dummy\}/, stderr.lines.last
-          assert_match /Not logged in/, stderr.lines.last
+          assert_match(/\{dummy\}/, stderr.lines.last)
+          assert_match(/Not logged in/, stderr.lines.last)
         end
       end
     end

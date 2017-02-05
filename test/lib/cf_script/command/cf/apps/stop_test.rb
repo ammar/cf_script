@@ -21,7 +21,7 @@ describe 'StopCommand' do
     fake_cf stop: :not_found do |stdout, stderr|
       command.run(:bogus)
 
-      assert_match /\{stop\} failed to stop/, stderr.lines.first
+      assert_match(/\{stop\} failed to stop/, stderr.lines.first)
     end
   end
 
@@ -29,7 +29,7 @@ describe 'StopCommand' do
     fake_cf stop: :not_found do |stdout, stderr|
       assert_equal false, command.run(:bogus)
 
-      assert_match /\{stop\} failed to stop/, stderr.lines.first
+      assert_match(/\{stop\} failed to stop/, stderr.lines.first)
     end
   end
 end

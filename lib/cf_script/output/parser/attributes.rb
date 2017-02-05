@@ -9,7 +9,7 @@ module CfScript
 
         CfScript::Attribute.new(
           symbolize_name ? symbolize(name) : name,
-          Regexp.last_match['value'].strip
+          value
         )
       end
     end

@@ -9,7 +9,7 @@ describe CfScript::Target do
     assert_equal '', target.api_endpoint
     assert_equal '', target.org
     assert_equal '', target.space
-    assert_equal nil, target.user
+    assert_nil   target.user
   end
 
   describe "to_options" do

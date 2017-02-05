@@ -9,11 +9,11 @@ module CfScript
     end
 
     def ok?
-      out.last_line_matches? /^OK$/
+      out.last_line_matches?(/^OK$/)
     end
 
     def authenticated?
-      matches? /Authenticating\.\.\.\nOK/m
+      matches?(/Authenticating\.\.\.\nOK/m)
     end
 
     def failed?
@@ -37,15 +37,15 @@ module CfScript
     end
 
     def not_found?(type, name)
-      out.last_line_matches? /#{type} #{name} not found/
+      out.last_line_matches?(/#{type} #{name} not found/)
     end
 
     def is_already?(name, state)
-      out.last_line_matches? /#{name} is already #{state}/
+      out.last_line_matches?(/#{name} is already #{state}/)
     end
 
     def already_exists?(type, name)
-      out.last_line_matches? /#{type} #{name} already exists/
+      out.last_line_matches?(/#{type} #{name} already exists/)
     end
   end
 end

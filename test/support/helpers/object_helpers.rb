@@ -10,13 +10,13 @@ module ObjectHelpers
   end
 
   def build_instance_status_attrs(options = {})
-  	attrs = build_attribute_list({
+    build_attribute_list({
       index:    '0',
       state:    '1',
       since:    '2',
-      cpu:    	'3',
+      cpu:      '3',
       memory:   '4',
-      disk:   	'5',
+      disk:     '5',
       details:  '6'
     }.merge(options))
   end
@@ -24,6 +24,6 @@ module ObjectHelpers
   def build_instance_status(options = {})
     attrs = build_instance_status_attrs(options)
 
-		CfScript::InstanceStatus.new(attrs)
+    CfScript::InstanceStatus.new(attrs)
   end
 end

@@ -14,7 +14,7 @@ class CfScript::Executor::Simple
           echo(line)
 					out << line
 				end
-			rescue Errno::EIO => e
+			rescue Errno::EIO
 				# Ignored
 			ensure
 				::Process.wait pid

@@ -56,7 +56,7 @@ describe CfScript::Output::Parser::Section do
     it "returns nil if the section title is not found" do
       list = parser.parse_section_attributes(text_buffer, 'NOPE')
 
-      assert_equal nil, list
+      assert_nil list
     end
   end
 end

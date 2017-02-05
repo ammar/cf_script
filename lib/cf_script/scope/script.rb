@@ -32,7 +32,7 @@ module CfScript::Scope
 
       # If api is given and there are no username or password, set the api
       if options[:api] and (options[:username].nil? or options[:password].nil?)
-        unless endpoint = CfScript::Command.api(options[:api])
+        unless CfScript::Command.api(options[:api])
           error :cf, "Could not set the API endpoint: #{options[:api]}"
           raise "Could not set the API endpoint: #{options[:api]}"
         end

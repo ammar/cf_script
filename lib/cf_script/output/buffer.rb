@@ -46,7 +46,7 @@ module CfScript
     end
 
     def contains?(text)
-      matches? /#{text}/
+      matches?(/#{text}/)
     end
 
     def last_line_matches?(regexp)

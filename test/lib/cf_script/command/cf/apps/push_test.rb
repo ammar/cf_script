@@ -23,7 +23,7 @@ describe 'PushCommand' do
     fake_cf push: :empty do
       result = command.run(:api)
 
-      assert_equal nil, result
+      assert_nil result
     end
   end
 

@@ -32,7 +32,7 @@ describe 'UnsetEnvCommand' do
       result = command.run(:bogus, 'VAR_NAME')
 
       assert_equal false, result
-      assert_match /\{unset_env\} FAILED/, stderr.lines.first
+      assert_match(/\{unset_env\} FAILED/, stderr.lines.first)
     end
   end
 end

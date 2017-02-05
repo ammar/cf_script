@@ -22,7 +22,7 @@ module CfScript::Command
       attrs = output.attributes
 
       unless attrs.empty?
-        space = CfScript::Space.new(
+        CfScript::Space.new(
           space_name,
           attrs[:org].value,
           attrs[:apps].to_a,

@@ -41,18 +41,18 @@ class CfScript::AppInfo
   alias :cold? :stopped?
 
   def update(attrs)
-    @requested_state = attrs[:requested_state].value if attrs.key?(:requested_state)
-    @instances       = attrs[:instances].value if attrs.key?(:instances)
+    @requested_state = attrs.key?(:requested_state) ? attrs[:requested_state].value : nil
+    @instances       = attrs.key?(:instances) ? attrs[:instances].value : nil
 
     @urls            = attrs.key?(:urls) ? attrs[:urls].to_a : []
 
-    @usage           = attrs[:usage].value if attrs.key?(:usage)
-    @last_uploaded   = attrs[:last_uploaded].value if attrs.key?(:last_uploaded)
-    @stack           = attrs[:stack].value if attrs.key?(:stack)
-    @buildpack       = attrs[:buildpack].value if attrs.key?(:buildpack)
+    @usage           = attrs.key?(:usage) ? attrs[:usage].value : nil
+    @last_uploaded   = attrs.key?(:last_uploaded) ? attrs[:last_uploaded].value : nil
+    @stack           = attrs.key?(:stack) ? attrs[:stack].value : nil
+    @buildpack       = attrs.key?(:buildpack) ? attrs[:buildpack].value : nil
 
-    @memory          = attrs[:memory].value if attrs.key?(:memory)
-    @disk            = attrs[:disk].value if attrs.key?(:disk)
+    @memory          = attrs.key?(:memory) ? attrs[:memory].value : nil
+    @disk            = attrs.key?(:disk) ? attrs[:disk].value :  nil
 
     if @memory.nil? and @usage
       @memory = @usage.split(' ').first

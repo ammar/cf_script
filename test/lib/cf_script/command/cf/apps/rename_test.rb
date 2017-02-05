@@ -21,7 +21,7 @@ describe 'RenameCommand' do
     fake_cf rename: :not_found do |stdout, stderr|
       command.run(:old, :new)
 
-      assert_match /\{rename\} failed to rename/, stderr.lines.first
+      assert_match(/\{rename\} failed to rename/, stderr.lines.first)
     end
   end
 
@@ -29,7 +29,7 @@ describe 'RenameCommand' do
     fake_cf rename: :not_found do |stdout, stderr|
       assert_equal false, command.run(:old, :new)
 
-      assert_match /\{rename\} failed to rename/, stderr.lines.first
+      assert_match(/\{rename\} failed to rename/, stderr.lines.first)
     end
   end
 end

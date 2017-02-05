@@ -32,7 +32,7 @@ describe 'SetEnvCommand' do
       result = command.run(:api, 'API_PASSWORD', 'password')
 
       assert_equal false, result
-      assert_match /\{set_env\} FAILED/, stderr.lines.first
+      assert_match(/\{set_env\} FAILED/, stderr.lines.first)
     end
   end
 end
