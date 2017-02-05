@@ -79,7 +79,11 @@ describe CfScript::Scope::App do
   it "includes the App::State module" do
     assert_respond_to subject, :start
     assert_respond_to subject, :stop
+    assert_respond_to subject, :restart
     assert_respond_to subject, :push
+    assert_respond_to subject, :restage
+    assert_respond_to subject, :scale
+    assert_respond_to subject, :restart_instance
   end
 
   it "includes the App::Env module" do

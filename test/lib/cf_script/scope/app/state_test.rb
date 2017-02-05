@@ -89,6 +89,23 @@ describe CfScript::Scope::App::State do
     end
   end
 
+  it "defines a scale method that calls Command.scale with the app name and options" do
+    app = create_app(:api)
+
+    arg_catcher = lambda do |command, *args, &block|
+      assert_equal :scale,  command
+      assert_equal [:api, { i: 4, k: '256M', m: '128M' }], args
+
+      return :called
+    end
+
+    app.stub :cf_self, true do
+      CfScript::Command.stub :run, arg_catcher do
+        assert_equal :called, app.scale(i: 4, k: '256M', m: '128M')
+      end
+    end
+  end
+
   it "defines a restart_instance method that calls Command.restart_app_instance with the app name and an instance index" do
     app = create_app(:api)
 

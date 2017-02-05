@@ -181,6 +181,7 @@ end
 | &emsp;&nbsp;restart                   | `cf restart APP_NAME`                                   | &#x2713; |
 | &emsp;&nbsp;push                      | `cf push APP_NAME [OPTIONS]`                            | &#x2713; |
 | &emsp;&nbsp;restage                   | `cf restage APP_NAME`                                   | &#x2713; |
+| &emsp;&nbsp;scale                     | `cf scale APP_NAME [OPTIONS]`                           | &#x2713; |
 | &emsp;&nbsp;rename                    | `cf rename APP_NAME NEW_APP_NAME`                       | &#x2713; |
 | &emsp;&nbsp;delete                    | `cf delete APP_NAME [-f -r]`                            | &#x2713; |
 | &emsp;&nbsp;env                       | `cf env APP_NAME`                                       | &#x2713; |

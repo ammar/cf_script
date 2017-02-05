@@ -30,9 +30,15 @@ module CfScript::Scope
       end
     end
 
+    def scale(options)
+      CfScript::Command.scale name, options do |scaled|
+        cf_self
+      end
+    end
+
     def restart_instance(index)
-      CfScript::Command.restart_app_instance name, index do |app_info|
-        @app_info = app_info if app_info
+      CfScript::Command.restart_app_instance name, index do |restarted|
+        cf_self
       end
     end
   end
