@@ -5,8 +5,8 @@ branches:
     - master
 
 before_script:
-  - wget http://go-cli.s3-website-us-east-1.amazonaws.com/releases/latest/cf-linux-amd64.tgz -O /tmp/cf-linux-amd64.tgz
-  - tar -xvf /tmp/cf-linux-amd64.tgz
+  - wget https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.23.1&source=github-rel -O /tmp/cf-linux-64.tgz
+  - tar -xvf /tmp/cf-linux-64.tgz
   - export PATH=$PATH:$PWD/
 
 rvm:
